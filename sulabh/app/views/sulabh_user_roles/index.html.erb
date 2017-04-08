@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Sulabh User Roles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Role</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sulabh_user_roles.each do |sulabh_user_role| %>
+      <tr>
+        <td><%= sulabh_user_role.username %></td>
+        <td><%= sulabh_user_role.role %></td>
+        <td><%= link_to 'Show', sulabh_user_role %></td>
+        <td><%= link_to 'Edit', edit_sulabh_user_role_path(sulabh_user_role) %></td>
+        <td><%= link_to 'Destroy', sulabh_user_role, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sulabh user role', new_sulabh_user_role_path %>

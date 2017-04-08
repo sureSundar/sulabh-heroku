@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Sulabh Req Offer Maps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Request</th>
+      <th>Offer</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sulabh_req_offer_maps.each do |sulabh_req_offer_map| %>
+      <tr>
+        <td><%= sulabh_req_offer_map.request %></td>
+        <td><%= sulabh_req_offer_map.offer %></td>
+        <td><%= sulabh_req_offer_map.status %></td>
+        <td><%= link_to 'Show', sulabh_req_offer_map %></td>
+        <td><%= link_to 'Edit', edit_sulabh_req_offer_map_path(sulabh_req_offer_map) %></td>
+        <td><%= link_to 'Destroy', sulabh_req_offer_map, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sulabh req offer map', new_sulabh_req_offer_map_path %>

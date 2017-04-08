@@ -1,0 +1,45 @@
+<%= form_for(@sulabh_loan_offer) do |f| %>
+  <% if @sulabh_loan_offer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sulabh_loan_offer.errors.count, "error") %> prohibited this sulabh_loan_offer from being saved:</h2>
+
+      <ul>
+      <% @sulabh_loan_offer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :username_id %><br>
+    <%= f.text_field :username_id %>
+  </div>
+  <div class="field">
+    <%= f.label :behavescore %><br>
+    <%= f.text_field :behavescore %>
+  </div>
+  <div class="field">
+    <%= f.label :offeramount %><br>
+    <%= f.text_field :offeramount %>
+  </div>
+  <div class="field">
+    <%= f.label :expiresby %><br>
+    <%= f.datetime_select :expiresby %>
+  </div>
+  <div class="field">
+    <%= f.label :offerinterestrate %><br>
+    <%= f.text_field :offerinterestrate %>
+  </div>
+  <div class="field">
+    <%= f.label :paybydate %><br>
+    <%= f.datetime_select :paybydate %>
+  </div>
+  <div class="field">
+    <%= f.label :interestrate %><br>
+    <%= f.text_field :interestrate %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

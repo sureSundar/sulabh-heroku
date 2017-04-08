@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username_id: 
+  behavescore: MyString
+  offeramount: 9.99
+  expiresby: 2017-04-07 21:46:18
+  offerinterestrate: 9.99
+  paybydate: 2017-04-07 21:46:18
+  interestrate: 9.99
+
+two:
+  username_id: 
+  behavescore: MyString
+  offeramount: 9.99
+  expiresby: 2017-04-07 21:46:18
+  offerinterestrate: 9.99
+  paybydate: 2017-04-07 21:46:18
+  interestrate: 9.99

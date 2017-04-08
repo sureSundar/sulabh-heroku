@@ -1,0 +1,33 @@
+<%= form_for(@sulabh_loan_confirm) do |f| %>
+  <% if @sulabh_loan_confirm.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sulabh_loan_confirm.errors.count, "error") %> prohibited this sulabh_loan_confirm from being saved:</h2>
+
+      <ul>
+      <% @sulabh_loan_confirm.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :request_id %><br>
+    <%= f.text_field :request_id %>
+  </div>
+  <div class="field">
+    <%= f.label :offer_id %><br>
+    <%= f.text_field :offer_id %>
+  </div>
+  <div class="field">
+    <%= f.label :policyno_id %><br>
+    <%= f.text_field :policyno_id %>
+  </div>
+  <div class="field">
+    <%= f.label :financedetails_id %><br>
+    <%= f.text_field :financedetails_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

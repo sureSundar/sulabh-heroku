@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  loanamount: 9.99
+  policypremium: 9.99
+  procfee: 9.99
+  approvedintrate: 9.99
+  installmentcount: 1
+  installmentfrequency: MyString
+
+two:
+  loanamount: 9.99
+  policypremium: 9.99
+  procfee: 9.99
+  approvedintrate: 9.99
+  installmentcount: 1
+  installmentfrequency: MyString

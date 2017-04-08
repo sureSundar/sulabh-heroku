@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Sulabh Offer Statuses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Offer</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sulabh_offer_statuses.each do |sulabh_offer_status| %>
+      <tr>
+        <td><%= sulabh_offer_status.offer %></td>
+        <td><%= sulabh_offer_status.status %></td>
+        <td><%= link_to 'Show', sulabh_offer_status %></td>
+        <td><%= link_to 'Edit', edit_sulabh_offer_status_path(sulabh_offer_status) %></td>
+        <td><%= link_to 'Destroy', sulabh_offer_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sulabh offer status', new_sulabh_offer_status_path %>

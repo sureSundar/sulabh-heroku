@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Sulabh Financials</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Loanamount</th>
+      <th>Policypremium</th>
+      <th>Procfee</th>
+      <th>Approvedintrate</th>
+      <th>Installmentcount</th>
+      <th>Installmentfrequency</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sulabh_financials.each do |sulabh_financial| %>
+      <tr>
+        <td><%= sulabh_financial.loanamount %></td>
+        <td><%= sulabh_financial.policypremium %></td>
+        <td><%= sulabh_financial.procfee %></td>
+        <td><%= sulabh_financial.approvedintrate %></td>
+        <td><%= sulabh_financial.installmentcount %></td>
+        <td><%= sulabh_financial.installmentfrequency %></td>
+        <td><%= link_to 'Show', sulabh_financial %></td>
+        <td><%= link_to 'Edit', edit_sulabh_financial_path(sulabh_financial) %></td>
+        <td><%= link_to 'Destroy', sulabh_financial, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sulabh financial', new_sulabh_financial_path %>

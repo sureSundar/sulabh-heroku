@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Policyno:</strong>
+  <%= @sulabh_policy_claim.policyno %>
+</p>
+
+<p>
+  <strong>Claimno:</strong>
+  <%= @sulabh_policy_claim.claimno %>
+</p>
+
+<p>
+  <strong>Claimstatus:</strong>
+  <%= @sulabh_policy_claim.claimstatus %>
+</p>
+
+<p>
+  <strong>Claimedamount:</strong>
+  <%= @sulabh_policy_claim.claimedamount %>
+</p>
+
+<p>
+  <strong>Settlementamount:</strong>
+  <%= @sulabh_policy_claim.settlementamount %>
+</p>
+
+<%= link_to 'Edit', edit_sulabh_policy_claim_path(@sulabh_policy_claim) %> |
+<%= link_to 'Back', sulabh_policy_claims_path %>

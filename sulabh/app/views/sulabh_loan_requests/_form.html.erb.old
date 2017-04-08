@@ -1,0 +1,57 @@
+	<%= form_for(@sulabh_loan_request), :class=> "btn-primary" do |f| %>
+	  <% if @sulabh_loan_request.errors.any? %>
+		<div id="error_explanation">
+		  <h2><%= pluralize(@sulabh_loan_request.errors.count, "error") %> prohibited this sulabh_loan_request from being saved:</h2>
+
+		  <ul>
+		  <% @sulabh_loan_request.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+		  <% end %>
+		  </ul>
+		</div>
+	  <% end %>  
+
+	  <div class="field">
+		<%= f.label :username_id %><br>
+		<%= f.text_field :username_id %>
+	  </div>
+	  <div class="field">
+		<%= f.label :behavescore %><br>
+		<%= f.text_field :behavescore %>
+	  </div>
+	  <div class="field">
+		<%= f.label :amount %><br>
+		<%= f.text_field :amount %>
+	  </div>
+	  <div class="field">
+		<%= f.label :requiredby %><br>
+		<%= f.datetime_select :requiredby %>
+	  </div>
+	  <div class="field">
+		<%= f.label :paybydate %><br>
+		<%= f.datetime_select :paybydate %>
+	  </div>
+	  <div class="field">
+		<%= f.label :mininterest %><br>
+		<%= f.text_field :mininterest %>
+	  </div>
+	  <div class="field">
+		<%= f.label :maxinterest %><br>
+		<%= f.text_field :maxinterest %>
+	  </div>
+	  <div class="field">
+		<%= f.label :interest %><br>
+		<%= f.text_field :interest %>
+	  </div>
+	  <div class="field">
+		<%= f.label :minpaybyamount %><br>
+		<%= f.text_field :minpaybyamount %>
+	  </div>
+	  <div class="field">
+		<%= f.label :maxpaybyamount %><br>
+		<%= f.text_field :maxpaybyamount %>
+	  </div>
+	  <div class="actions">
+		<%= f.submit %>
+	  </div>
+	<% end %>

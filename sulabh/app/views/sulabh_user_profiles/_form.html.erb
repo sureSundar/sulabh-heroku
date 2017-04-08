@@ -1,0 +1,75 @@
+<%= form_for(@sulabh_user_profile) do |f| %>
+  <% if @sulabh_user_profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sulabh_user_profile.errors.count, "error") %> prohibited this sulabh_user_profile from being saved:</h2>
+
+      <ul>
+      <% @sulabh_user_profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+  <%= f.fields_for :sulabh_address do |ff| %>
+  <div>
+    <%= ff.label :address1 %>
+    <%= ff.text_field :address1 %>
+	<%= ff.label :address2 %>
+    <%= ff.text_field :address2 %>
+	<%= ff.label :address3 %>
+    <%= ff.text_field :address3 %>
+	<%= ff.label :city %>
+    <%= ff.text_field :city %>
+	<%= ff.label :pincode %>
+    <%= ff.text_field :pincode %>
+	<%= ff.label :country %>
+    <%= ff.text_field :country %>
+  </div>
+  <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :mobile %><br>
+    <%= f.text_field :mobile %>
+  </div>
+  <div class="field">
+    <%= f.label :aadhar %><br>
+    <%= f.text_field :aadhar %>
+  </div>
+  <div class="field">
+    <%= f.label :accountno %><br>
+    <%= f.text_field :accountno %>
+  </div>
+  <div class="field">
+    <%= f.label :ifsc %><br>
+    <%= f.text_field :ifsc %>
+  </div>
+  <div class="field">
+    <%= f.label :bank %><br>
+    <%= f.text_field :bank %>
+  </div>
+  <div class="field">
+    <%= f.label :locale %><br>
+    <%= f.text_field :locale %>
+  </div>
+  <div class="field">
+    <%= f.label :occupation %><br>
+    <%= f.text_field :occupation %>
+  </div>
+  <div class="field">
+    <%= f.label :monthlyrevenue %><br>
+    <%= f.text_field :monthlyrevenue %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

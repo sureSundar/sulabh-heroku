@@ -1,0 +1,41 @@
+<%= form_for(@sulabh_policy) do |f| %>
+  <% if @sulabh_policy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sulabh_policy.errors.count, "error") %> prohibited this sulabh_policy from being saved:</h2>
+
+      <ul>
+      <% @sulabh_policy.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :provider %><br>
+    <%= f.text_field :provider %>
+  </div>
+  <div class="field">
+    <%= f.label :policyno %><br>
+    <%= f.text_field :policyno %>
+  </div>
+  <div class="field">
+    <%= f.label :scheme %><br>
+    <%= f.text_field :scheme %>
+  </div>
+  <div class="field">
+    <%= f.label :premium %><br>
+    <%= f.text_field :premium %>
+  </div>
+  <div class="field">
+    <%= f.label :startdate %><br>
+    <%= f.datetime_select :startdate %>
+  </div>
+  <div class="field">
+    <%= f.label :enddate %><br>
+    <%= f.datetime_select :enddate %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

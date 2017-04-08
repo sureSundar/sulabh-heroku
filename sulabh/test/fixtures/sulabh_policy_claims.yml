@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  policyno: MyString
+  claimno: MyString
+  claimstatus: MyString
+  claimedamount: 9.99
+  settlementamount: 9.99
+
+two:
+  policyno: MyString
+  claimno: MyString
+  claimstatus: MyString
+  claimedamount: 9.99
+  settlementamount: 9.99

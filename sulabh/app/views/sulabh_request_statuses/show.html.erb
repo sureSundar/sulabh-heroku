@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Request:</strong>
+  <%= @sulabh_request_status.request %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @sulabh_request_status.status %>
+</p>
+
+<%= link_to 'Edit', edit_sulabh_request_status_path(@sulabh_request_status) %> |
+<%= link_to 'Back', sulabh_request_statuses_path %>
