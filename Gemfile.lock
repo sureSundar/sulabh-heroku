@@ -108,6 +108,7 @@ GEM
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)
+    pg (0.20.0)
     phonegap-rails (0.0.12)
     rack (1.6.5)
     rack-pjax (1.0.0)
@@ -218,6 +219,7 @@ DEPENDENCIES
   httparty
   jbuilder (~> 2.0)
   jquery-rails
+  pg
   phonegap-rails
   rails (= 4.2.4)
   rails_admin (~> 1.1.1)
