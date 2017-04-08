@@ -1,0 +1,34 @@
+{:uriI"‚file://app/assets/javascripts/bower.json?type=application/json&id=b85ee29bc88b6851e6beb9b0ca1ab40d6c9a6f7bc13d43bf844de70152879d8a:ET:load_pathI"app/assets/javascripts;T:filenameI"&app/assets/javascripts/bower.json;T:	nameI"
+bower;T:logical_pathI"bower.json;T:content_typeI"application/json;T:sourceI"{
+  "name": "Scrollify",
+  "version": "1.0.14",
+  "homepage": "https://github.com/lukehaas/Scrollify",
+  "authors": [
+    "Luke Haas <lukehaas7@gmail.com>"
+  ],
+  "description": "A jQuery plugin that assists scrolling and smoothly snaps to sections.",
+  "main": "jquery.scrollify.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "scroll",
+    "snap"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "*"
+  }
+}
+;T:metadata{	:dependencieso:Set:
+@hash{
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"@processors:type=application/json&file_type=application/json;TTI"4file-digest://app/assets/javascripts/bower.json;TT:charsetI"
+utf-8;F:digest"%µÏ*_A¯¿4OÓ_Kæa·c]ú‘9{3G&BI—À–ú:lengthi:dependencies_digest"%º”FUÚWi…A]h:KJº9ª·•µi…|÷}Ûq¨:idI"Eb85ee29bc88b6851e6beb9b0ca1ab40d6c9a6f7bc13d43bf844de70152879d8a;F:
+mtimel+?öçX

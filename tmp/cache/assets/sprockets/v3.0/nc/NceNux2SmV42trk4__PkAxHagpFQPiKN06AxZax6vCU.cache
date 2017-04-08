@@ -1,0 +1,44 @@
+{:uriI"„file://app/assets/javascripts/package.json?type=application/json&id=46382279ce188936feb5d50cfcd87eb5045e5580ce3172222f80cde351e41407:ET:load_pathI"app/assets/javascripts;T:filenameI"(app/assets/javascripts/package.json;T:	nameI"package;T:logical_pathI"package.json;T:content_typeI"application/json;T:sourceI"²{
+  "name": "jquery-scrollify",
+  "version": "1.0.14",
+  "description": "A jQuery plugin that assists scrolling and smoothly snaps to sections.",
+  "main": "jquery.scrollify.js",
+  "scripts": {
+    "test": "mocha ./test/scrollify_test.js --recursive ./test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lukehaas/Scrollify.git"
+  },
+  "keywords": [
+    "scroll",
+    "jquery-plugin",
+    "ecosystem:jquery",
+    "snap",
+    "page"
+  ],
+  "dependencies": {
+    "jquery": ">=1.7"
+  },
+  "author": "Luke Haas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lukehaas/Scrollify/issues"
+  },
+  "demo": "http://projects.lukehaas.me/scrollify",
+  "homepage": "https://github.com/lukehaas/Scrollify",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-jquery": "^2.0.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-uglify": "^2.0.0",
+    "jquery": "^3.1.1",
+    "jsdom": "^9.8.3",
+    "mocha": "^3.1.2"
+  }
+}
+;T:metadata{	:dependencieso:Set:
+@hash{
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"@processors:type=application/json&file_type=application/json;TTI"6file-digest://app/assets/javascripts/package.json;TT:charsetI"
+utf-8;F:digest"%jê1ÒĞU¨“fEŒYˆ¸}ğ–®ïåñWé~ÏŠŞ’Y~:lengthi²:dependencies_digest"%!·½S•¸ÌÔæZ•»=PJ­BùóÇ`±­gŸÁ4:idI"E46382279ce188936feb5d50cfcd87eb5045e5580ce3172222f80cde351e41407;F:
+mtimel+?öçX

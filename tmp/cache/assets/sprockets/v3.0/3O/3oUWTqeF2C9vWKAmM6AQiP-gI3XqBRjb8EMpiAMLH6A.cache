@@ -1,0 +1,39 @@
+{:uriI"file://app/assets/javascripts/scrollify.jquery.json?type=application/json&id=84fbc421578426043c10b45ac226597fdd5df61f3365a331ef7981a4f250ff83:ET:load_pathI"app/assets/javascripts;T:filenameI"1app/assets/javascripts/scrollify.jquery.json;T:	nameI"scrollify.jquery;T:logical_pathI"scrollify.jquery.json;T:content_typeI"application/json;T:sourceI"ˆ{
+    "name": "scrollify",
+    "title": "jQuery Scrollify",
+    "description": "A jQuery plugin that assists scrolling and smoothly snaps to sections.",
+    "keywords": [
+        "scroll",
+        "snap"
+    ],
+    "version": "1.0.14",
+    "author": {
+        "name": "Luke Haas",
+        "url": "http://lukehaas.me"
+    },
+    "maintainers": [
+        {
+            "name": "Luke Haas",
+            "email": "",
+            "url": "http://lukehaas.me"
+        }
+    ],
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/lukehaas/Scrollify/blob/master/LICENSE"
+        }
+    ],
+    "bugs": "https://github.com/lukehaas/Scrollify/issues",
+    "homepage": "http://projects.lukehaas.me/scrollify",
+    "docs": "https://github.com/lukehaas/Scrollify",
+    "download": "https://github.com/lukehaas/Scrollify",
+    "dependencies": {
+        "jquery": ">=1.7"
+    }
+}
+;T:metadata{	:dependencieso:Set:
+@hash{
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"@processors:type=application/json&file_type=application/json;TTI"?file-digest://app/assets/javascripts/scrollify.jquery.json;TT:charsetI"
+utf-8;F:digest"%é?Ø£c‘ê>ã‹‰ÿÇ2ş…Ïà zqG4,—ĞÙbç:lengthiˆ:dependencies_digest"%ó1İPßiË•ÌilGŠı$u²lãä¡Å4ƒ:idI"E84fbc421578426043c10b45ac226597fdd5df61f3365a331ef7981a4f250ff83;F:
+mtimel+?öçX
