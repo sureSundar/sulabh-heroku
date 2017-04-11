@@ -6,13 +6,14 @@ Rails.application.routes.draw do
 
   get 'dew_requestor/myrequests'
 
-  get 'dew_requestor/offerLR'
+  get 'dew_requestor/(:id)/offerLR', :to => 'dew_requestor#offerLR', :as => '/dew_requestor/offerLR'
+  get 'dew_requestor/(:id)/showOffersLR', :to => 'dew_requestor#showOffersLR', :as => '/dew_requestor/showOffersLR'
 
   get 'dew_provider/dashboard'
 
   get 'dew_provider/offer'
 
-  get 'dew_provider/LRoffer'
+  get 'dew_provider/(:id)/LRoffer', :to => 'dew_provider#LRoffer', :as => '/dew_provider/LRoffer'
 
   get 'fluidic/requestflow'
 

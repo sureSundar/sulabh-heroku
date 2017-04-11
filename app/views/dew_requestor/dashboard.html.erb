@@ -1,2 +1,19 @@
-<h1>DewRequestor#dashboard</h1>
-<p>Find me in app/views/dew_requestor/dashboard.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 btn btn-outline-warning">
+		<!-- My open Requests container -->
+			<%= render :file => "sulabh_loan_requests/index.html" %>
+		</div>
+
+		<div class="col-md-6 btn btn-outline-success">
+		<!-- My open Offers container -->
+			<%= render :file => "sulabh_loan_offers/index.html" %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 btn btn-outline-danger">
+			<!--New Loan Request Form -->
+			<%= link_to "New Loan Request", new_sulabh_loan_request_path, :class => "btn btn-primary" %>
+		</div>
+	</div>
+</div>

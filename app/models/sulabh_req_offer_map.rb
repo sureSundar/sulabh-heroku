@@ -1,4 +1,4 @@
 class SulabhReqOfferMap < ActiveRecord::Base
-  belongs_to :request
-  belongs_to :offer
+  belongs_to :sulabh_loan_request
+  belongs_to :sulabh_loan_offer
 end

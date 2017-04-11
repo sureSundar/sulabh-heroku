@@ -3,8 +3,15 @@ class FluidicController < ApplicationController
 
   def requestflow
   end
-
   def role_selected
+    session['srole'] = params['srole']
+    if (params['srole'] === "Requestor")
+        redirect_to dew_requestor_dashboard_path
+    elsif (params['srole'] === "Provider")
+        redirect_to  dew_provider_dashboard_path
+    end
+  end
+  def role_selected1
   	puts "role selected.Recieved param #{params['srole']}"
     if (params['srole'] != nil)
       session['srole'] = params['srole']
