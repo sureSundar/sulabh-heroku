@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :two_factor_authenticatable, :database_authenticatable,:registerable,
          :recoverable, :rememberable, :trackable,:authentication_keys => [:phoneno]
-has_one_time_password
+#has_one_time_password
 validates :email, :presence => false, :email => false
 #validates_presence_of :phoneno
 validates_uniqueness_of :phoneno

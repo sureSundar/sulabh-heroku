@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
   
+  get 'dew_requestor/dashboard'
+
+  get 'dew_requestor/createLR'
+
+  get 'dew_requestor/myrequests'
+
+  get 'dew_requestor/offerLR'
+
+  get 'dew_provider/dashboard'
+
+  get 'dew_provider/offer'
+
+  get 'dew_provider/LRoffer'
+
   get 'fluidic/requestflow'
 
   devise_for :users, :controllers => { :registrations => "users/registrations" }

@@ -47730,3 +47730,492 @@ Processing by Devise::SessionsController#new as HTML
   Rendered devise/shared/_links.html.erb (3.6ms)
   Rendered devise/sessions/new.html.erb within layouts/application (44.6ms)
 Completed 200 OK in 4550ms (Views: 4537.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2017-04-11 17:13:12 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by FluidicController#requestflow as HTML
+  [1m[35mUser Load (440.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 14]]
+Completed 401 Unauthorized in 4813ms (ActiveRecord: 441.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-04-11 17:14:09 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (3.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (857.0ms)
+Completed 200 OK in 344248ms (Views: 344086.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2017-04-11 17:19:54 +0530
+Processing by FluidicController#requestflow as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2017-04-11 17:19:54 +0530
+Processing by FluidicController#requestflow as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-04-11 17:19:54 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 352ms (Views: 350.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-04-11 17:24:04 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (3.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (295.0ms)
+Completed 200 OK in 40349ms (Views: 40166.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/fluidic.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2017-04-11 17:24:45 +0530
+
+
+Started GET "/assets/application.self-69cf9b6b37aa3191ca1265cdbc2ecec73845095366c285090f3fc398c8528593.css?body=1" for ::1 at 2017-04-11 17:24:45 +0530
+
+
+Started GET "/users/sign_in" for ::1 at 2017-04-11 17:24:54 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (36.0ms)
+Completed 200 OK in 10439ms (Views: 10432.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-7311ba19fa03f42ce4849734807deed80837c7463705918690ebd307cf0acf01.css?body=1" for ::1 at 2017-04-11 17:25:05 +0530
+
+
+Started GET "/users/sign_in" for ::1 at 2017-04-11 17:25:24 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 489ms (Views: 483.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-04-11 17:28:31 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 317ms (Views: 315.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-04-11 17:29:50 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 571ms (Views: 565.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-04-11 17:30:30 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (190.0ms)
+Completed 200 OK in 1434ms (Views: 1429.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sulabh_loan_requests/new" for ::1 at 2017-04-11 17:32:11 +0530
+Processing by SulabhLoanRequestsController#new as HTML
+  Rendered sulabh_loan_requests/_form.html.erb (133.0ms)
+  Rendered sulabh_loan_requests/new.html.erb within layouts/application (159.0ms)
+Completed 500 Internal Server Error in 2221ms (ActiveRecord: 1.0ms)
+
+ActionView::Template::Error (undefined method `phoneno' for nil:NilClass):
+    14: 
+    15: 	  <div class="field">
+    16: 		<%= f.label :sulabh_user_profile_id %><br>
+    17: 		<%= f.hidden_field :sulabh_user_profile_id, :value => SulabhUserProfile.where(:mobile => current_user.phoneno)[0].id %>
+    18: 		<%= SulabhUserProfile.where(:mobile => current_user.phoneno)[0].name %>
+    19: 	  </div>
+    20: 	  <div class="field">
+  app/views/sulabh_loan_requests/_form.html.erb:17:in `block in _app_views_sulabh_loan_requests__form_html_erb___309221847_98322576'
+  app/views/sulabh_loan_requests/_form.html.erb:2:in `_app_views_sulabh_loan_requests__form_html_erb___309221847_98322576'
+  app/views/sulabh_loan_requests/new.html.erb:3:in `_app_views_sulabh_loan_requests_new_html_erb___172342455_98261160'
+
+
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (13.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (2622.3ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (140.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (269.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-04-11 17:33:12 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 632ms (Views: 630.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-04-11 17:37:23 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (33.0ms)
+Completed 200 OK in 777ms (Views: 771.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-04-11 17:40:56 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 518ms (Views: 516.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-04-11 17:41:53 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 560ms (Views: 555.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-04-11 17:43:13 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 629ms (Views: 627.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-04-11 17:47:51 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2057.2ms)
+Completed 200 OK in 8505ms (Views: 8500.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-04-11 17:49:11 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 398ms (Views: 397.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-04-11 17:49:16 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 166ms (Views: 162.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-04-11 17:49:39 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 185ms (Views: 184.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-04-11 17:49:48 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (2.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 493ms (Views: 492.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-04-11 17:50:22 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 430ms (Views: 429.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-04-11 17:51:18 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 760ms (Views: 759.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-04-11 17:52:24 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 464ms (Views: 462.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2017-04-11 17:52:52 +0530
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KGPJlox30HyGqm7SDEWBPEsTcJ3JGl34ckJURNWT1KFkKBuXSDVPmbCc67d76fkhX6O+yZ+QyCXpBABx7zRQRQ==", "user"=>{"phoneno"=>"8056149278", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (264.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phoneno" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["phoneno", "8056149278"]]
+Completed 500 Internal Server Error in 8282ms (ActiveRecord: 264.0ms)
+
+SocketError (getaddrinfo: This is usually a temporary error during hostname resolution and means that the local server did not receive a response from an authoritative server. ):
+  app/models/user.rb:19:in `send_two_factor_authentication_code'
+
+
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (65.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (2.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (110.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (399.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2017-04-11 18:56:00 +0530
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KGPJlox30HyGqm7SDEWBPEsTcJ3JGl34ckJURNWT1KFkKBuXSDVPmbCc67d76fkhX6O+yZ+QyCXpBABx7zRQRQ==", "user"=>{"phoneno"=>"8056149278", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phoneno" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["phoneno", "8056149278"]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (78.0ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2017-04-11 02:08:42.211994"], ["current_sign_in_at", "2017-04-11 13:26:09.245855"], ["sign_in_count", 11], ["updated_at", "2017-04-11 13:26:09.248855"], ["id", 1]]
+  [1m[35m (338.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 952ms (ActiveRecord: 418.0ms)
+
+
+Started GET "/" for ::1 at 2017-04-11 18:56:09 +0530
+Processing by FluidicController#requestflow as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mSulabhUserProfile Load (33.0ms)[0m  SELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?  [["mobile", "8056149278"]]
+  [1m[36mSulabhUserRole Load (12.0ms)[0m  [1mSELECT "sulabh_user_roles".* FROM "sulabh_user_roles" WHERE "sulabh_user_roles"."sulabh_user_profile_id" = ?[0m  [["sulabh_user_profile_id", 1]]
+  [1m[35mSulabhRole Load (31.0ms)[0m  SELECT  "sulabh_roles".* FROM "sulabh_roles" WHERE "sulabh_roles"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "sulabh_roles".* FROM "sulabh_roles" WHERE "sulabh_roles"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mSulabhRole Load (1.0ms)[0m  SELECT  "sulabh_roles".* FROM "sulabh_roles" WHERE "sulabh_roles"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (1.0ms)[0m  [1mSELECT  "sulabh_roles".* FROM "sulabh_roles" WHERE "sulabh_roles"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered fluidic/requestflow.html.erb within layouts/application (478.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?  [["mobile", "8056149278"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?[0m  [["mobile", "8056149278"]]
+Completed 200 OK in 4291ms (Views: 4201.4ms | ActiveRecord: 83.0ms)
+
+
+Started POST "/fluidic/role_selected" for ::1 at 2017-04-11 18:56:24 +0530
+Processing by FluidicController#role_selected as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PQYnJ9rjbrTW6KmFPWH1aeu7q3Ycc6aiuN9ecLgyjsG+rcNjWmgAMA4kxsSqI5oZ5x1Zja248RHCvKoWJi4kRQ==", "srole"=>"Requestor", "commit"=>"Requestor"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mSulabhUserProfile Load (0.0ms)[0m  [1mSELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?[0m  [["mobile", "8056149278"]]
+  [1m[35m (28.0ms)[0m  SELECT COUNT(*) FROM "sulabh_loan_requests" WHERE "sulabh_loan_requests"."sulabh_user_profile_id" = ?  [["sulabh_user_profile_id", 1]]
+  [1m[36mSulabhLoanRequest Load (1.0ms)[0m  [1mSELECT "sulabh_loan_requests".* FROM "sulabh_loan_requests" WHERE "sulabh_loan_requests"."sulabh_user_profile_id" = ?[0m  [["sulabh_user_profile_id", 1]]
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?  [["sulabh_loan_request_id", 7], ["status", "CONFIRMED"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?[0m  [["sulabh_loan_request_id", 8], ["status", "CONFIRMED"]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?  [["sulabh_loan_request_id", 9], ["status", "CONFIRMED"]]
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?[0m  [["sulabh_loan_request_id", 10], ["status", "CONFIRMED"]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?  [["sulabh_loan_request_id", 11], ["status", "CONFIRMED"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?[0m  [["sulabh_loan_request_id", 12], ["status", "CONFIRMED"]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?  [["sulabh_loan_request_id", 13], ["status", "CONFIRMED"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?[0m  [["sulabh_loan_request_id", 14], ["status", "CONFIRMED"]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?  [["sulabh_loan_request_id", 23], ["status", "CONFIRMED"]]
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?[0m  [["sulabh_loan_request_id", 24], ["status", "CONFIRMED"]]
+  Rendered fluidic/_req_loan_table.html.erb (124.0ms)
+  Rendered fluidic/Requestor_land.html.erb within layouts/application (399.0ms)
+  [1m[35mCACHE (1.0ms)[0m  SELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?  [["mobile", "8056149278"]]
+  [1m[36mCACHE (1.0ms)[0m  [1mSELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?[0m  [["mobile", "8056149278"]]
+Completed 200 OK in 937ms (Views: 883.1ms | ActiveRecord: 36.0ms)
+
+
+Started GET "/sulabh_loan_requests/new" for ::1 at 2017-04-11 18:56:46 +0530
+Processing by SulabhLoanRequestsController#new as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mSulabhUserProfile Load (0.0ms)[0m  [1mSELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?[0m  [["mobile", "8056149278"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?  [["mobile", "8056149278"]]
+  Rendered sulabh_loan_requests/_form.html.erb (108.0ms)
+  Rendered sulabh_loan_requests/new.html.erb within layouts/application (212.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?[0m  [["mobile", "8056149278"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?  [["mobile", "8056149278"]]
+Completed 200 OK in 609ms (Views: 604.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sulabh_loan_requests" for ::1 at 2017-04-11 18:57:18 +0530
+Processing by SulabhLoanRequestsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YT0x1OJn3NURY5rBdWav7Ba0dgV11jM9qlbmqTnCHw/iltWQYuyyUcmv9YDiJMCcGhKE/sQdZI7QNRLPp961iw==", "sulabh_loan_request"=>{"sulabh_user_profile_id"=>"1", "behavescore"=>"78", "amount"=>"1750", "requiredby"=>"04/18/2017", "paybydate"=>"07/11/2017", "mininterest"=>"8", "maxinterest"=>"12", "interest"=>"", "minpaybyamount"=>"", "maxpaybyamount"=>""}, "commit"=>"Create Sulabh loan request"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (43.0ms)[0m  [1mINSERT INTO "sulabh_loan_requests" ("sulabh_user_profile_id", "behavescore", "amount", "paybydate", "mininterest", "maxinterest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["sulabh_user_profile_id", 1], ["behavescore", "78"], ["amount", 1750.0], ["paybydate", "2017-11-07 00:00:00.000000"], ["mininterest", 8.0], ["maxinterest", 12.0], ["created_at", "2017-04-11 13:27:18.773807"], ["updated_at", "2017-04-11 13:27:18.773807"]]
+  [1m[35m (216.0ms)[0m  commit transaction
+  Rendered fluidic/loan_applied.html.erb within layouts/application (2.0ms)
+  [1m[36mSulabhUserProfile Load (0.0ms)[0m  [1mSELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?[0m  [["mobile", "8056149278"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?  [["mobile", "8056149278"]]
+Completed 200 OK in 1480ms (Views: 1166.1ms | ActiveRecord: 259.0ms)
+
+
+Started GET "/fluidic/fetch_offers" for ::1 at 2017-04-11 19:00:17 +0530
+Processing by FluidicController#fetch_offers as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mSulabhUserProfile Load (0.0ms)[0m  SELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?  [["mobile", "8056149278"]]
+  [1m[36mSulabhLoanOffer Load (18.0ms)[0m  [1mSELECT "sulabh_loan_offers".* FROM "sulabh_loan_offers" WHERE (expiresby >= '2017-04-11 13:30:17.828710')[0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?  [["sulabh_loan_offer_id", 1], ["status", "CONFIRMED"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?[0m  [["sulabh_loan_offer_id", 2], ["status", "CONFIRMED"]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?  [["sulabh_loan_offer_id", 7], ["status", "CONFIRMED"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?[0m  [["sulabh_loan_offer_id", 8], ["status", "CONFIRMED"]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?  [["sulabh_loan_offer_id", 9], ["status", "CONFIRMED"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?[0m  [["sulabh_loan_offer_id", 10], ["status", "CONFIRMED"]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?  [["sulabh_loan_offer_id", 11], ["status", "CONFIRMED"]]
+  Rendered fluidic/OffersForRequest.html.erb within layouts/application (54.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?[0m  [["mobile", "8056149278"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?  [["mobile", "8056149278"]]
+Completed 200 OK in 610ms (Views: 582.1ms | ActiveRecord: 19.0ms)
+
+
+Started GET "/sulabh_loan_offers/new" for ::1 at 2017-04-11 19:00:25 +0530
+Processing by SulabhLoanOffersController#new as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mSulabhUserProfile Load (0.0ms)[0m  SELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?  [["mobile", "8056149278"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?[0m  [["mobile", "8056149278"]]
+  Rendered sulabh_loan_offers/_form.html.erb (121.0ms)
+  Rendered sulabh_loan_offers/new.html.erb within layouts/application (137.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?  [["mobile", "8056149278"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?[0m  [["mobile", "8056149278"]]
+Completed 200 OK in 1450ms (Views: 1447.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sulabh_loan_offers" for ::1 at 2017-04-11 19:00:35 +0530
+Processing by SulabhLoanOffersController#index as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mSulabhLoanOffer Load (0.0ms)[0m  [1mSELECT "sulabh_loan_offers".* FROM "sulabh_loan_offers"[0m
+  [1m[35mSulabhUserProfile Load (0.0ms)[0m  SELECT  "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mSulabhUserProfile Load (0.0ms)[0m  SELECT  "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."id" = ? LIMIT 1  [["id", nil]]
+  Rendered sulabh_loan_offers/index.html.erb within layouts/application (13.0ms)
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 1.0ms)
+
+ActiveRecord::RecordNotFound (Couldn't find SulabhUserProfile with 'id'=):
+  app/views/sulabh_loan_offers/index.html.erb:23:in `block in _app_views_sulabh_loan_offers_index_html_erb__671858672_94576260'
+  app/views/sulabh_loan_offers/index.html.erb:20:in `_app_views_sulabh_loan_offers_index_html_erb__671858672_94576260'
+
+
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (85.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (55.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered D:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (155.0ms)
+
+
+Started GET "/fluidic/role_selected?srole=Requestor" for ::1 at 2017-04-11 19:01:04 +0530
+Processing by FluidicController#role_selected as HTML
+  Parameters: {"srole"=>"Requestor"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mSulabhUserProfile Load (0.0ms)[0m  SELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?  [["mobile", "8056149278"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_loan_requests" WHERE "sulabh_loan_requests"."sulabh_user_profile_id" = ?[0m  [["sulabh_user_profile_id", 1]]
+  [1m[35mSulabhLoanRequest Load (1.0ms)[0m  SELECT "sulabh_loan_requests".* FROM "sulabh_loan_requests" WHERE "sulabh_loan_requests"."sulabh_user_profile_id" = ?  [["sulabh_user_profile_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?[0m  [["sulabh_loan_request_id", 7], ["status", "CONFIRMED"]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?  [["sulabh_loan_request_id", 8], ["status", "CONFIRMED"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?[0m  [["sulabh_loan_request_id", 9], ["status", "CONFIRMED"]]
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?  [["sulabh_loan_request_id", 10], ["status", "CONFIRMED"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?[0m  [["sulabh_loan_request_id", 11], ["status", "CONFIRMED"]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?  [["sulabh_loan_request_id", 12], ["status", "CONFIRMED"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?[0m  [["sulabh_loan_request_id", 13], ["status", "CONFIRMED"]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?  [["sulabh_loan_request_id", 14], ["status", "CONFIRMED"]]
+  [1m[36m (37.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?[0m  [["sulabh_loan_request_id", 23], ["status", "CONFIRMED"]]
+  [1m[35m (25.0ms)[0m  SELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?  [["sulabh_loan_request_id", 24], ["status", "CONFIRMED"]]
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?[0m  [["sulabh_loan_request_id", 25], ["status", "CONFIRMED"]]
+  [1m[35mSulabhUserProfile Load (0.0ms)[0m  SELECT  "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered fluidic/_req_loan_table.html.erb (94.0ms)
+  Rendered fluidic/Requestor_land.html.erb within layouts/application (96.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?[0m  [["mobile", "8056149278"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?  [["mobile", "8056149278"]]
+Completed 200 OK in 547ms (Views: 471.0ms | ActiveRecord: 66.0ms)
+
+
+Started POST "/fluidic/25/fetch_offers" for ::1 at 2017-04-11 19:01:15 +0530
+Processing by FluidicController#fetch_offers as HTML
+  Parameters: {"authenticity_token"=>"FuWWkcMEpBrXACEqR0SJi6T+tXuxIQwmeXfw65yy2feVTnLVQ4/Kng/MTmvQBub7qFhHgADqW5UDFASNAq5zcw==", "id"=>"25"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mSulabhLoanRequest Load (1.0ms)[0m  SELECT  "sulabh_loan_requests".* FROM "sulabh_loan_requests" WHERE "sulabh_loan_requests"."id" = ? LIMIT 1  [["id", 25]]
+  [1m[36mSulabhLoanOffer Load (0.0ms)[0m  [1mSELECT "sulabh_loan_offers".* FROM "sulabh_loan_offers" WHERE (expiresby >= '2017-04-11 13:31:15.935520')[0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?  [["sulabh_loan_offer_id", 1], ["status", "CONFIRMED"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?[0m  [["sulabh_loan_offer_id", 2], ["status", "CONFIRMED"]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?  [["sulabh_loan_offer_id", 7], ["status", "CONFIRMED"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?[0m  [["sulabh_loan_offer_id", 8], ["status", "CONFIRMED"]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?  [["sulabh_loan_offer_id", 9], ["status", "CONFIRMED"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?[0m  [["sulabh_loan_offer_id", 10], ["status", "CONFIRMED"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "sulabh_loan_requests".* FROM "sulabh_loan_requests" WHERE "sulabh_loan_requests"."id" = ? LIMIT 1  [["id", "25"]]
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?[0m  [["sulabh_loan_offer_id", 11], ["status", "CONFIRMED"]]
+  Rendered fluidic/OffersForRequest.html.erb within layouts/application (16.0ms)
+  [1m[35mSulabhUserProfile Load (0.0ms)[0m  SELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?  [["mobile", "8056149278"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?[0m  [["mobile", "8056149278"]]
+Completed 200 OK in 282ms (Views: 276.0ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/fluidic/25/fetch_offers" for ::1 at 2017-04-11 19:32:28 +0530
+Processing by FluidicController#fetch_offers as HTML
+  Parameters: {"authenticity_token"=>"FuWWkcMEpBrXACEqR0SJi6T+tXuxIQwmeXfw65yy2feVTnLVQ4/Kng/MTmvQBub7qFhHgADqW5UDFASNAq5zcw==", "id"=>"25"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mSulabhLoanRequest Load (1.0ms)[0m  [1mSELECT  "sulabh_loan_requests".* FROM "sulabh_loan_requests" WHERE "sulabh_loan_requests"."id" = ? LIMIT 1[0m  [["id", 25]]
+  [1m[35mSulabhLoanOffer Load (1.0ms)[0m  SELECT "sulabh_loan_offers".* FROM "sulabh_loan_offers" WHERE (expiresby >= '2017-04-11 14:02:33.990927')
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?[0m  [["sulabh_loan_offer_id", 1], ["status", "CONFIRMED"]]
+  [1m[35m (4.0ms)[0m  SELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?  [["sulabh_loan_offer_id", 2], ["status", "CONFIRMED"]]
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?[0m  [["sulabh_loan_offer_id", 7], ["status", "CONFIRMED"]]
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?  [["sulabh_loan_offer_id", 8], ["status", "CONFIRMED"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?[0m  [["sulabh_loan_offer_id", 9], ["status", "CONFIRMED"]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?  [["sulabh_loan_offer_id", 10], ["status", "CONFIRMED"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "sulabh_loan_requests".* FROM "sulabh_loan_requests" WHERE "sulabh_loan_requests"."id" = ? LIMIT 1[0m  [["id", "25"]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?  [["sulabh_loan_offer_id", 11], ["status", "CONFIRMED"]]
+  Rendered fluidic/OffersForRequest.html.erb within layouts/application (60.0ms)
+  [1m[36mSulabhUserProfile Load (0.0ms)[0m  [1mSELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?[0m  [["mobile", "8056149278"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?  [["mobile", "8056149278"]]
+Completed 200 OK in 6506ms (Views: 6481.4ms | ActiveRecord: 8.0ms)
+
+
+Started POST "/fluidic/25/fetch_offers" for ::1 at 2017-04-11 19:33:30 +0530
+Processing by FluidicController#fetch_offers as HTML
+  Parameters: {"authenticity_token"=>"FuWWkcMEpBrXACEqR0SJi6T+tXuxIQwmeXfw65yy2feVTnLVQ4/Kng/MTmvQBub7qFhHgADqW5UDFASNAq5zcw==", "id"=>"25"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mSulabhLoanRequest Load (0.0ms)[0m  SELECT  "sulabh_loan_requests".* FROM "sulabh_loan_requests" WHERE "sulabh_loan_requests"."id" = ? LIMIT 1  [["id", 25]]
+  [1m[36mSulabhLoanOffer Load (0.0ms)[0m  [1mSELECT "sulabh_loan_offers".* FROM "sulabh_loan_offers" WHERE (expiresby >= '2017-04-11 14:03:30.880237')[0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?  [["sulabh_loan_offer_id", 1], ["status", "CONFIRMED"]]
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?[0m  [["sulabh_loan_offer_id", 2], ["status", "CONFIRMED"]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?  [["sulabh_loan_offer_id", 7], ["status", "CONFIRMED"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?[0m  [["sulabh_loan_offer_id", 8], ["status", "CONFIRMED"]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?  [["sulabh_loan_offer_id", 9], ["status", "CONFIRMED"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?[0m  [["sulabh_loan_offer_id", 10], ["status", "CONFIRMED"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "sulabh_loan_requests".* FROM "sulabh_loan_requests" WHERE "sulabh_loan_requests"."id" = ? LIMIT 1  [["id", "25"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_offer_statuses" WHERE "sulabh_offer_statuses"."sulabh_loan_offer_id" = ? AND "sulabh_offer_statuses"."status" = ?[0m  [["sulabh_loan_offer_id", 11], ["status", "CONFIRMED"]]
+  Rendered fluidic/OffersForRequest.html.erb within layouts/application (23.0ms)
+  [1m[35mSulabhUserProfile Load (0.0ms)[0m  SELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?  [["mobile", "8056149278"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?[0m  [["mobile", "8056149278"]]
+Completed 200 OK in 648ms (Views: 642.9ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/fluidic/role_selected?srole=Requestor" for ::1 at 2017-04-11 19:34:32 +0530
+Processing by FluidicController#role_selected as HTML
+  Parameters: {"srole"=>"Requestor"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mSulabhUserProfile Load (0.0ms)[0m  [1mSELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?[0m  [["mobile", "8056149278"]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "sulabh_loan_requests" WHERE "sulabh_loan_requests"."sulabh_user_profile_id" = ?  [["sulabh_user_profile_id", 1]]
+  [1m[36mSulabhLoanRequest Load (1.0ms)[0m  [1mSELECT "sulabh_loan_requests".* FROM "sulabh_loan_requests" WHERE "sulabh_loan_requests"."sulabh_user_profile_id" = ?[0m  [["sulabh_user_profile_id", 1]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?  [["sulabh_loan_request_id", 7], ["status", "CONFIRMED"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?[0m  [["sulabh_loan_request_id", 8], ["status", "CONFIRMED"]]
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?  [["sulabh_loan_request_id", 9], ["status", "CONFIRMED"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?[0m  [["sulabh_loan_request_id", 10], ["status", "CONFIRMED"]]
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?  [["sulabh_loan_request_id", 11], ["status", "CONFIRMED"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?[0m  [["sulabh_loan_request_id", 12], ["status", "CONFIRMED"]]
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?  [["sulabh_loan_request_id", 13], ["status", "CONFIRMED"]]
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?[0m  [["sulabh_loan_request_id", 14], ["status", "CONFIRMED"]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?  [["sulabh_loan_request_id", 23], ["status", "CONFIRMED"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?[0m  [["sulabh_loan_request_id", 24], ["status", "CONFIRMED"]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "sulabh_request_statuses" WHERE "sulabh_request_statuses"."sulabh_loan_request_id" = ? AND "sulabh_request_statuses"."status" = ?  [["sulabh_loan_request_id", 25], ["status", "CONFIRMED"]]
+  [1m[36mSulabhUserProfile Load (0.0ms)[0m  [1mSELECT  "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered fluidic/_req_loan_table.html.erb (44.0ms)
+  Rendered fluidic/Requestor_land.html.erb within layouts/application (87.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?  [["mobile", "8056149278"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?[0m  [["mobile", "8056149278"]]
+Completed 200 OK in 2034ms (Views: 2024.8ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/sulabh_loan_requests/new" for ::1 at 2017-04-11 19:34:38 +0530
+Processing by SulabhLoanRequestsController#new as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mSulabhUserProfile Load (1.0ms)[0m  [1mSELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?[0m  [["mobile", "8056149278"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?  [["mobile", "8056149278"]]
+  Rendered sulabh_loan_requests/_form.html.erb (30.0ms)
+  Rendered sulabh_loan_requests/new.html.erb within layouts/application (87.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?[0m  [["mobile", "8056149278"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sulabh_user_profiles".* FROM "sulabh_user_profiles" WHERE "sulabh_user_profiles"."mobile" = ?  [["mobile", "8056149278"]]
+Completed 200 OK in 457ms (Views: 451.0ms | ActiveRecord: 1.0ms)
