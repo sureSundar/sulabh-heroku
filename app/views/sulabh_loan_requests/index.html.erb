@@ -5,7 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>Username</th>
+      <th>User Id</th>
       <th>Behavescore</th>
       <th>Amount</th>
       <th>Requiredby</th>
@@ -19,10 +19,11 @@
     </tr>
   </thead>
 
+
   <tbody>
     <% @sulabh_loan_requests.each do |sulabh_loan_request| %>
       <tr>
-        <td><%= sulabh_loan_request.username %></td>
+        <td><%= sulabh_loan_request.username_id %></td>
         <td><%= sulabh_loan_request.behavescore %></td>
         <td><%= sulabh_loan_request.amount %></td>
         <td><%= sulabh_loan_request.requiredby %></td>

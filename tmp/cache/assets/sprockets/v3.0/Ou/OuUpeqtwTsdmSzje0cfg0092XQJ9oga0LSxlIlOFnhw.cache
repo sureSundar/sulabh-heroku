@@ -1,0 +1,79 @@
+{:uriI"file://app/assets/stylesheets/scaffolds.txt?type=text/plain&id=8f3a63f24adc4a848ecad1c84ae0f70b84dc817033ddddc5cb2300ec2cf87d3c:ET:load_pathI"app/assets/stylesheets;T:filenameI")app/assets/stylesheets/scaffolds.txt;T:	nameI"scaffolds;T:logical_pathI"scaffolds.txt;T:content_typeI"text/plain;T:sourceI"body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a {
+  color: #000;
+
+  &:visited {
+    color: #666;
+  }
+
+  &:hover {
+    color: #fff;
+    background-color: #000;
+  }
+}
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px;
+  }
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}
+;T:metadata{	:dependencieso:Set:
+@hash{
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"4processors:type=text/plain&file_type=text/plain;TTI"7file-digest://app/assets/stylesheets/scaffolds.txt;TT:charsetI"
+utf-8;F:digest"%‚dá¥‹Ã<]2
+¿¡„'ò˘]*vÍ‰lIäôé°%:lengthi:dependencies_digest"%8_gîO-e<rÊ»‹vñ	GloøÓ•P¶ÈÀEFÆŒ„:idI"E8f3a63f24adc4a848ecad1c84ae0f70b84dc817033ddddc5cb2300ec2cf87d3c;F:
+mtimel+ $ÈX

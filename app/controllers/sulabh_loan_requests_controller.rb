@@ -28,7 +28,8 @@ class SulabhLoanRequestsController < ApplicationController
 
     respond_to do |format|
       if @sulabh_loan_request.save
-        format.html { redirect_to @sulabh_loan_request, notice: 'Sulabh loan request was successfully created.' }
+        #format.html { redirect_to @sulabh_loan_request, notice: 'Sulabh loan request was successfully created.' }
+        format.html { render "fluidic/loan_applied.html.erb", notice: 'Sulabh loan request was successfully created.' }
         format.json { render :show, status: :created, location: @sulabh_loan_request }
       else
         format.html { render :new }
@@ -69,6 +70,6 @@ class SulabhLoanRequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sulabh_loan_request_params
-      params.require(:sulabh_loan_request).permit(:username_id, :behavescore, :amount, :requiredby, :paybydate, :mininterest, :maxinterest, :interest, :minpaybyamount, :maxpaybyamount)
+      params.require(:sulabh_loan_request).permit(:username_id, :sulabh_user_profile_id,:behavescore, :amount, :requiredby, :paybydate, :mininterest, :maxinterest, :interest, :minpaybyamount, :maxpaybyamount)
     end
 end

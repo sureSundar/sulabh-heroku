@@ -26,6 +26,12 @@ class SulabhUserProfilesController < ApplicationController
   # POST /sulabh_user_profiles.json
   def create
     @sulabh_user_profile = SulabhUserProfile.new(sulabh_user_profile_params)
+    req_role = @sulabh_user_profile.sulabh_user_roles.build
+    req_role.role_id = SulabhRole.where(:role => "Requestor")[0]
+    req_role.save
+    req_role = @sulabh_user_profile.sulabh_user_roles.build
+    req_role.role_id = SulabhRole.where(:role => "Provider")[0]
+    req_role.save
 
     respond_to do |format|
       if @sulabh_user_profile.save
@@ -43,7 +49,9 @@ class SulabhUserProfilesController < ApplicationController
   def update
     respond_to do |format|
 	 if @sulabh_user_profile.update(sulabh_user_profile_params)
-        format.html { redirect_to @sulabh_user_profile, notice: 'Sulabh user profile was successfully updated.' }
+        #format.html { redirect_to @sulabh_user_profile, notice: 'Sulabh user profile was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Sulabh user profile was successfully updated.' }
+        #format.html {render 'fluidic/requestflow.html'}
         format.json { render :show, status: :ok, location: @sulabh_user_profile }
       else
         format.html { render :edit }

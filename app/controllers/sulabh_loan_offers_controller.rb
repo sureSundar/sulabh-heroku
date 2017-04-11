@@ -24,11 +24,13 @@ class SulabhLoanOffersController < ApplicationController
   # POST /sulabh_loan_offers
   # POST /sulabh_loan_offers.json
   def create
-    @sulabh_loan_offer = SulabhLoanOffer.new(sulabh_loan_offer_params)
+    @su = SulabhUserProfile.where(:mobile => current_user.phoneno)[0]
+
+    @sulabh_loan_offer = @su.sulabh_loan_offers.build(sulabh_loan_offer_params) #SulabhLoanOffer.new(sulabh_loan_offer_params)
 
     respond_to do |format|
       if @sulabh_loan_offer.save
-        format.html { redirect_to @sulabh_loan_offer, notice: 'Sulabh loan offer was successfully created.' }
+        format.html { redirect_to fetch_all_offers_path, notice: 'Sulabh loan offer was successfully created.' }
         format.json { render :show, status: :created, location: @sulabh_loan_offer }
       else
         format.html { render :new }

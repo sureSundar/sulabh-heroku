@@ -1,0 +1,76 @@
+
+
+<p id="notice"><%= notice %></p>
+
+<h1>Sulabh Loan Request</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User Id</th>
+      <th>Behavescore</th>
+      <th>Amount</th>
+      <th>Requiredby</th>
+      <th>Paybydate</th>
+      <th>Mininterest</th>
+      <th>Maxinterest</th>
+      <th>Interest</th>
+      <th>Minpaybyamount</th>
+      <th>Maxpaybyamount</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <% sulabh_loan_request = SulabhLoanRequest.find(lc.sulabh_loan_request_id) %>
+  <tbody>
+      <tr>
+        <td><%= sulabh_loan_request.username_id %></td>
+        <td><%= sulabh_loan_request.behavescore %></td>
+        <td><%= sulabh_loan_request.amount %></td>
+        <td><%= sulabh_loan_request.requiredby %></td>
+        <td><%= sulabh_loan_request.paybydate %></td>
+        <td><%= sulabh_loan_request.mininterest %></td>
+        <td><%= sulabh_loan_request.maxinterest %></td>
+        <td><%= sulabh_loan_request.interest %></td>
+        <td><%= sulabh_loan_request.minpaybyamount %></td>
+        <td><%= sulabh_loan_request.maxpaybyamount %></td>
+      </tr>
+  </tbody>
+</table>
+
+<br>
+  <h1>Loan Offer Details</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Behavescore</th>
+        <th>Offeramount</th>
+        <th>Expiresby</th>
+        <th>Offerinterestrate</th>
+        <th>Paybydate</th>
+        <th>Interestrate</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+<% sulabh_loan_offer = SulabhLoanOffer.find(lc.sulabh_loan_offer_id) %>
+    <tbody>
+      
+        <tr>
+          <td>
+            <%= SulabhUserProfile.find(sulabh_loan_offer.sulabh_user_profile_id).name %>
+        </td>
+          <td><%= sulabh_loan_offer.behavescore %></td>
+          <td><%= sulabh_loan_offer.offeramount %></td>
+          <td><%= sulabh_loan_offer.expiresby %></td>
+          <td><%= sulabh_loan_offer.offerinterestrate %></td>
+          <td><%= sulabh_loan_offer.paybydate %></td>
+          <td><%= sulabh_loan_offer.interestrate %></td>
+        </tr>
+    </tbody>
+  </table>
+
+  <br>
+<%= sp.inspect %>
+<%= sf.inspect %>

@@ -1,0 +1,97 @@
+
+
+ <% if @sulabh_loan_requests.count > 0  %>
+    <h5> <%= "My Loan Requests" %> </h5>
+
+<table class="table table-responsive table-sm table-hover table-bordered">
+  <thead>
+    <tr>
+      <th>User Id</th>
+      <th>Behavescore</th>
+      <th>Amount</th> 
+      <th>Requiredby</th>
+      <th>Paybydate</th>
+      <th>Mininterest</th>
+      <th>Maxinterest</th>
+      <th>Interest</th>
+      <th>Minpaybyamount</th>
+      <th>Maxpaybyamount</th>
+      <th colspan="4">Actions</th>
+    </tr>
+  </thead>
+
+ <% else %>
+      <h3> <%= "Hi " + @su.name %> </h3>
+      <h5> <%= "No loan requests found..." %></h5>
+  
+  <% end %>
+
+<% sulabh_loan_offer ||= (@lc && @lc.sulabh_loan_offer_id) || session['soffer'] %>
+
+  <tbody>
+    <% @sulabh_loan_requests.each do |sulabh_loan_request| %>
+    <% if session['srole'] === "Requestor" %>
+      <% if sulabh_loan_request.sulabh_request_statuses.where(:status => "CONFIRMED").count == 0  %>
+      <tr>
+        <td><% if (sulabh_loan_request && sulabh_loan_request.sulabh_user_profile_id != nil) %>
+          <%= SulabhUserProfile.find(sulabh_loan_request.sulabh_user_profile_id).name %>
+        <% end %></td>
+        <td><%= sulabh_loan_request.behavescore %></td>
+        <td><%= sulabh_loan_request.amount %></td>
+        <td><%= sulabh_loan_request.requiredby %></td>
+        <td><%= sulabh_loan_request.paybydate %></td>
+        <td><%= sulabh_loan_request.mininterest %></td>
+        <td><%= sulabh_loan_request.maxinterest %></td>
+        <td><%= sulabh_loan_request.interest %></td>
+        <td><%= sulabh_loan_request.minpaybyamount %></td>
+        <td><%= sulabh_loan_request.maxpaybyamount %></td>
+        <td><%= link_to 'Show', sulabh_loan_request %></td>
+            <td><%= link_to 'Edit', edit_sulabh_loan_request_path(sulabh_loan_request) %></td>
+            <td><%= link_to 'Destroy', sulabh_loan_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% if (sulabh_loan_request && sulabh_loan_offer) %>
+                <td><%= link_to 'Confirm Loan', loan_confirm_path(sulabh_loan_request,sulabh_loan_offer), method: :post %> </td>
+            <% elsif sulabh_loan_offer == nil %>
+                <% session['sloan'] = sulabh_loan_request.id %>
+                <td><%= link_to 'See Offers',fetch_offers_path(sulabh_loan_request), method: :post %> </td>
+             <% end %> 
+        <!-- % else %>
+            <td><%= "LOAN CONFIRMED" %> </td -->
+        <% end %>
+      
+    <% elsif session['srole'] === "Provider" %>
+      <!-- tr class=<%= ["bg-primary","bg-success","bg-warning","bg-danger","bg-info"].sample %> -->
+      <% if sulabh_loan_request.sulabh_request_statuses.where(:status => "CONFIRMED").count == 0  && sulabh_loan_offer &&SulabhLoanOffer.find(sulabh_loan_offer).sulabh_user_profile_id != sulabh_loan_request.sulabh_user_profile_id %>
+      <tr>
+        <td><% if (sulabh_loan_request && sulabh_loan_request.sulabh_user_profile_id != nil) %>
+          <%= SulabhUserProfile.find(sulabh_loan_request.sulabh_user_profile_id).name %>
+        <% end %></td>
+        <td><%= sulabh_loan_request.behavescore %></td>
+        <td><%= sulabh_loan_request.amount %></td>
+        <td><%= sulabh_loan_request.requiredby %></td>
+        <td><%= sulabh_loan_request.paybydate %></td>
+        <td><%= sulabh_loan_request.mininterest %></td>
+        <td><%= sulabh_loan_request.maxinterest %></td>
+        <td><%= sulabh_loan_request.interest %></td>
+        <td><%= sulabh_loan_request.minpaybyamount %></td>
+        <td><%= sulabh_loan_request.maxpaybyamount %></td>
+        <td><%= link_to 'Show', sulabh_loan_request %></td>
+            <td><%= link_to 'Edit', edit_sulabh_loan_request_path(sulabh_loan_request) %></td>
+            <td><%= link_to 'Destroy', sulabh_loan_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% if (sulabh_loan_request && sulabh_loan_offer) %>
+                <td><%= link_to 'Confirm Loan', loan_confirm_path(sulabh_loan_request,sulabh_loan_offer), method: :post %> </td>
+            <% elsif sulabh_loan_offer == nil %>
+                <% session['sloan'] = sulabh_loan_request.id %>
+                <td><%= link_to 'See Offers',fetch_offers_path(sulabh_loan_request), method: :post %> </td>
+             <% end %> 
+        <!-- % else %>
+            <td><%= "LOAN CONFIRMED" %> </td -->
+        <% end %>
+       <% end %> 
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sulabh loan request', new_sulabh_loan_request_path %>

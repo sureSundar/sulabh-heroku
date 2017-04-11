@@ -1,0 +1,159 @@
+
+
+<p id="notice"><%= notice %></p>
+<h3 align = "left"> Loan Confirmation # : <%= @lc.id %> </h3>
+<h4>Sulabh Loan Request</h4>
+
+<table class="table table-responsive table-sm table-hover table-bordered btn-primary">
+  <thead>
+    <tr>
+      <th>User name</th>
+      <th>Behavescore</th>
+      <th>Amount</th>
+      <th>Requiredby</th>
+      <th>Paybydate</th>
+      <th>Mininterest</th>
+      <th>Maxinterest</th>
+      <th>Interest</th>
+      <th>Minpaybyamount</th>
+      <th>Maxpaybyamount</th>
+      
+    </tr>
+  </thead>
+
+  <% sulabh_loan_request = SulabhLoanRequest.find(@lc.sulabh_loan_request_id) %>
+  <% sulabh_loan_offer = SulabhLoanOffer.find(@lc.sulabh_loan_offer_id) %>
+  <tbody>
+      <tr>
+        <td><%= SulabhUserProfile.find(sulabh_loan_request.sulabh_user_profile_id).name %></td>
+        <td><%= sulabh_loan_request.behavescore %></td>
+        <td><%= sulabh_loan_request.amount %></td>
+        <td><%= sulabh_loan_request.requiredby %></td>
+        <td><%= sulabh_loan_request.paybydate %></td>
+        <td><%= sulabh_loan_request.mininterest %></td>
+        <td><%= sulabh_loan_request.maxinterest %></td>
+        <td><%= sulabh_loan_request.interest %></td>
+        <td><%= sulabh_loan_request.minpaybyamount %></td>
+        <td><%= sulabh_loan_request.maxpaybyamount %></td>
+        <% if sulabh_loan_request.sulabh_request_statuses.where(:status => "CONFIRMED").count == 0 %>
+            <td><%= link_to 'Edit', edit_sulabh_loan_request_path(sulabh_loan_request) %></td>
+            <td><%= link_to 'Destroy', sulabh_loan_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% if (sulabh_loan_request && sulabh_loan_offer) %>
+                <td><%= link_to 'Confirm Loan', loan_confirm_path(sulabh_loan_request,sulabh_loan_offer), method: :post %> </td>
+            <% elsif sulabh_loan_offer == nil %>
+                <% session['sloan'] = sulabh_loan_request.id %>
+                <td><%= link_to 'See Offers',fetch_offers_path(sulabh_loan_request), method: :post %> </td>
+             <% end %> 
+        <% else %>
+            <td><%= "LOAN CONFIRMED" %> </td>
+        <% end %>
+      </tr>
+  </tbody>
+</table>
+
+<br>
+  <h4>Loan Offer Details</h4>
+
+  <table class="table table-responsive table-sm table-hover table-bordered btn-danger">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Behavescore</th>
+        <th>Offeramount</th>
+        <th>Expiresby</th>
+        <th>Offerinterestrate</th>
+        <th>Paybydate</th>
+        <th>Interestrate</th>
+      
+      </tr>
+    </thead>
+
+    <tbody>
+      
+        <tr>
+          <td>
+            <%= SulabhUserProfile.find(sulabh_loan_offer.sulabh_user_profile_id).name %>
+        </td>
+          <td><%= sulabh_loan_offer.behavescore %></td>
+          <td><%= sulabh_loan_offer.offeramount %></td>
+          <td><%= sulabh_loan_offer.expiresby %></td>
+          <td><%= sulabh_loan_offer.offerinterestrate %></td>
+          <td><%= sulabh_loan_offer.paybydate %></td>
+          <td><%= sulabh_loan_offer.interestrate %></td>
+          <% if sulabh_loan_offer.sulabh_offer_statuses.where(:status => "CONFIRMED").count == 0 %>
+            <td><%= link_to 'Show', sulabh_loan_offer %></td>
+            <td><%= link_to 'Edit', edit_sulabh_loan_offer_path(sulabh_loan_offer) %></td>
+            <% if (sulabh_loan_request && sulabh_loan_offer) %>
+                <td><%= link_to 'Select Offer', loan_confirm_path(sulabh_loan_request,sulabh_loan_offer), method: :post %> </td>
+            <% elsif sulabh_loan_request == nil %>
+               <% session['soffer'] = sulabh_loan_offer.id %>
+                <td><%= link_to 'Select Loan',"/fluidic/role_selected?srole=Requestor" %> </td>
+             <% end %> 
+          <% else %>
+              <td><%= 'OFFER CONFIRMED' %> </td>
+          <% end %>          
+        </tr>
+    </tbody>
+  </table>
+
+  <br>
+  
+<% sulabh_policy = SulabhPolicy.find(@lc.sulabh_policy_id) %>
+
+<h4>Listing Sulabh Policy</h4>
+
+<table class="table table-responsive table-sm table-hover table-bordered btn-info">
+  <thead>
+    <tr>
+      <th>Provider</th>
+      <th>Policyno</th>
+      <th>Scheme</th>
+      <th>Premium</th>
+      <th>Startdate</th>
+      <th>Enddate</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= sulabh_policy.provider %></td>
+        <td><%= sulabh_policy.policyno %></td>
+        <td><%= sulabh_policy.scheme %></td>
+        <td><%= sulabh_policy.premium %></td>
+        <td><%= sulabh_policy.startdate %></td>
+        <td><%= sulabh_policy.enddate %></td>
+      </tr>
+  </tbody>
+</table>
+
+
+<% sulabh_financial = SulabhFinancial.find(@lc.sulabh_financial_id) %>
+
+
+<h4>Listing Sulabh Financials</h4>
+
+<table class="table table-responsive table-sm table-hover table-bordered btn-success">
+  <thead>
+    <tr>
+      <th>Loanamount</th>
+      <th>Policypremium</th>
+      <th>Procfee</th>
+      <th>Approvedintrate</th>
+      <th>Installmentcount</th>
+      <th>Installmentfrequency</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= sulabh_financial.loanamount %></td>
+        <td><%= sulabh_financial.policypremium %></td>
+        <td><%= sulabh_financial.procfee %></td>
+        <td><%= sulabh_financial.approvedintrate %></td>
+        <td><%= sulabh_financial.installmentcount %></td>
+        <td><%= sulabh_financial.installmentfrequency %></td>
+      </tr>
+  </tbody>
+</table>
+

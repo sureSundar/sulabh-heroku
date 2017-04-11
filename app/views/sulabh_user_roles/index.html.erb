@@ -14,8 +14,8 @@
   <tbody>
     <% @sulabh_user_roles.each do |sulabh_user_role| %>
       <tr>
-        <td><%= sulabh_user_role.username %></td>
-        <td><%= sulabh_user_role.role %></td>
+        <td><%= sulabh_user_role.sulabh_user_profile.name %></td>
+	<td><%= SulabhRole.find(sulabh_user_role.role_id).role %></td>	
         <td><%= link_to 'Show', sulabh_user_role %></td>
         <td><%= link_to 'Edit', edit_sulabh_user_role_path(sulabh_user_role) %></td>
         <td><%= link_to 'Destroy', sulabh_user_role, method: :delete, data: { confirm: 'Are you sure?' } %></td>

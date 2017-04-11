@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'fluidic/requestflow'
+
   devise_for :users, :controllers => { :registrations => "users/registrations" }
   
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -22,8 +24,12 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-
+devise_scope :user do
+#  scope '(:locale)', :locale => /en|ta|hi|te/  do
+	   #root to: "sulabh_loan_requests#index"
+     root to: "fluidic#requestflow"
+ # end
+end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -72,5 +78,12 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-get 'api_check', :to => 'say#hello'  
+get 'api_check', :to => 'say#hello' 
+post 'fluidic/role_selected', :to => 'fluidic#role_selected'
+get 'fluidic/role_selected', :to => 'fluidic#role_selected' 
+
+post 'fluidic/(:id)/fetch_offers', :to => 'fluidic#fetch_offers',:as => '/fetch_offers'
+get 'fluidic/fetch_offers', :to => 'fluidic#fetch_offers',:as => '/fetch_all_offers'
+post 'fluidic/(:id)/(:id1)/loan_confirm', :to => 'fluidic#loan_confirm',:as => '/loan_confirm'
+
 end

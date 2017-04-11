@@ -1,0 +1,15 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+te:
+  title: "Sulabh"
+  caption: "పరివర్తించడం సులభంగా నివసిస్తున్నారు"
+  loan: "రుణాలు"
+  proposal: "ప్రతిపాదనలు"
+  accepts: "అంగీకరిస్తుంది"
+  newloan: "New Loan Request"
+  openloan: "Open Loans"
+  wiploan: "WIP Loans"
+  closedloan: "Closed Loans"
+  loansummary: "Summary"
+  signout: "సైన్ ఔట్"

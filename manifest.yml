@@ -1,5 +1,9 @@
 ---
 applications:
 - name: sulabh
+  memory: 1 GB
+  instance: 1
+  path: .
+  command: bundle exec rake db:migrate && bundle exec rails s -p $PORT
   random-route: true
   memory: 256M

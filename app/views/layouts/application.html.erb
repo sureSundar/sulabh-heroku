@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sulabh</title>
+<title><%= t('title') +"-" + t('caption') %></title>
   	<script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>  
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -13,39 +13,64 @@
 </head>
 <body>
 
+<style>
+.jumbotron {
+    background-color: #f5821f; /*  ICICI Orange */
+    color: #ffffff;
+    height:22%;
+
+}
+
+
+.active
+{
+        background-color: #f5821f;
+
+}
+
+</style>
+
 <nav class="navbar navbar-inverse bg-primary" >
+	<div class="d-inline-block" height = "50">
+	<div class="navbar-brand d-inline-block align-top">
+  	<%= image_tag "logo.png",  width: "150", height: "50", class: "navbar-brand d-inline-block align-top" %>   
+	<div class="navbar-brand d-inline-block align-bottom">
+<%= if user_signed_in? 
+link_to(SulabhUserProfile.where(:mobile => current_user.phoneno)[0].name,edit_sulabh_user_profile_path(SulabhUserProfile.where(:mobile => current_user.phoneno)[0].id),:class => "navbar-brand d-inline-block align-top",height: "50")
+ end %><%=link_to("Role : [#{session['srole']}]","/fluidic/requestflow", :class=> "navbar-brand d-inline-block align-top",height: "50") %>
+	</div>
+	</div>
+
   <!-- Navbar content -->
    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#"><%= if user_signed_in? 
-										current_user.phoneno 
-										end %></a>
-
+<ul class="navbar-nav ">
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="/fluidic/role_selected?srole=Requestor">Loan Requests</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+      <li class="nav-item"> 
+        <%= link_to "Available Loan Offers",fetch_all_offers_path,:class => "nav-link" %>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-	
+      <%= form_tag "/sulabh_loan_requests",:class => "locale nav-link form-inline my-2 my-lg-0",:method => "get" do %>
+        <%= select_tag 'locale',options_for_select(LANGUAGES,I18n.locale.to_s), :class=>"form-control mr-sm-2",onchange: 'this.form.submit();'  %>
+        <%= submit_tag 'submit' %>
+        <%= javascript_tag "$('.locale input').hide();" %>
+      <% end %>
 	<%= if user_signed_in? 
-		link_to('Sign Out',destroy_user_session_path,:method => :delete) 
+		link_to('Sign Out',destroy_user_session_path,:method => :delete,:class=> "btn btn-secondary") 
 		end
 	%>
   </div>
 </nav>
-
+<!-- div class="jumbotron text-center">
+    <%=image_tag "logo.png" %>
+    <h1><%= t('title') %> </h1>
+    <p><%= t('caption') %></p>
+  </div -->
 <%= yield %>
 
 </body>

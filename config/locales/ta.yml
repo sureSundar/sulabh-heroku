@@ -1,0 +1,15 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+ta:
+  title: "சுலபம்"
+  caption: "வாழ்க்கை பரிணமிக்க எளிதாய் ஒன்று சேர்வோம்..."
+  loan: "கடன்"
+  proposal: "திட்ட வரைவு "
+  accepts: "ஒப்பம்"
+  newloan: "புது கடன் வாங்க"
+  openloan: "கோரிய கடன்கள் "
+  wiploan: "நிலுவை கடன்கள் "
+  closedloan: "முடிந்த கடன்கள் "
+  loansummary: "கடன் பட்டியல் "
+  signout: "வெளியேறு " 

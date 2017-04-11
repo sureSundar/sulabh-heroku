@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+<% if session['lc'] != nil %>
+      <% @lc = SulabhLoanConfirm.find(session['lc']) %>
+      <div class="btn btn-secondary">
+      Currently processing Request:
+        <%= render :file => "fluidic/loan_confirm.html" %>
+      </div>
+<% end %>
+<% if session['srole'] === "Requestor" %>
+      <%= render "req_loan_table.html" %>
+<% elsif session['srole'] === "Provider" %>
+      <%= render "prov_loan_table.html" %>
+<% end %>
+

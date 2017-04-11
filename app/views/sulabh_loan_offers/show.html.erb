@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @sulabh_loan_offer.username %>
-</p>
+<div class="field">
+    <strong>Username </strong>
+    <%= SulabhUserProfile.find(@sulabh_loan_offer.sulabh_user_profile_id).name %>
+ </div>
 
 <p>
   <strong>Behavescore:</strong>

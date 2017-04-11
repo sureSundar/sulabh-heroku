@@ -1,0 +1,89 @@
+<p id="notice"><%= notice %></p>
+<% if session['lc'] != nil %>
+      <% @lc = SulabhLoanConfirm.find(session['lc']) %>
+      <div class="btn btn-secondary ">
+      Currently processing Request:
+        <%= render :file => "fluidic/loan_confirm.html" %>
+      </div>
+<% end %>
+<h1>Listing Sulabh Loan Offers</h1>
+
+<table class="table table-responsive table-sm table-hover table-bordered">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Behavescore</th>
+      <th>Offeramount</th>
+      <th>Expiresby</th>
+      <th>Offerinterestrate</th>
+      <th>Paybydate</th>
+      <th>Interestrate</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <% sulabh_loan_request ||= (@lc && @lc.sulabh_loan_request_id) || session['sloan'] %>
+  <tbody>
+    <% @offers.each do |sulabh_loan_offer| %>
+    <% if session['srole'] === "Requestor" %>
+        <% if sulabh_loan_offer.sulabh_offer_statuses.where(:status => "CONFIRMED").count == 0  && sulabh_loan_request &&sulabh_loan_offer.sulabh_user_profile_id != SulabhLoanRequest.find(sulabh_loan_request).sulabh_user_profile_id %>
+      <tr>
+        <td>
+        <% if (sulabh_loan_offer && sulabh_loan_offer.sulabh_user_profile_id != nil) %>
+          <%= SulabhUserProfile.find(sulabh_loan_offer.sulabh_user_profile_id).name %>
+        <% end %>
+      </td>
+
+        <td><%= sulabh_loan_offer.behavescore %></td>
+        <td><%= sulabh_loan_offer.offeramount %></td>
+        <td><%= sulabh_loan_offer.expiresby %></td>
+        <td><%= sulabh_loan_offer.offerinterestrate %></td>
+        <td><%= sulabh_loan_offer.paybydate %></td>
+        <td><%= sulabh_loan_offer.interestrate %></td>        
+            <td><%= link_to 'Show', sulabh_loan_offer %></td>
+            <td><%= link_to 'Edit', edit_sulabh_loan_offer_path(sulabh_loan_offer) %></td>
+            <% if (sulabh_loan_request && sulabh_loan_offer) %>
+                <td><%= link_to 'Select Offer', loan_confirm_path(sulabh_loan_request,sulabh_loan_offer), method: :post %> </td>
+            <% elsif sulabh_loan_request == nil %>
+               <% session['soffer'] = sulabh_loan_offer.id %>
+                <td><%= link_to 'Select Loan',"/fluidic/role_selected?srole=Requestor" %> </td>
+             <% end %> 
+          <!-- % else %>
+              <td><%= link_to 'Offer CONFIRMED', loan_confirm_path(sulabh_loan_request,sulabh_loan_offer), method: :post %> </td -->
+          <% end %>
+          </tr>
+        
+      <% elsif session['srole'] === "Provider" %>
+          <% if sulabh_loan_offer.sulabh_offer_statuses.where(:status => "CONFIRMED").count == 0  && sulabh_loan_request &&sulabh_loan_offer.sulabh_user_profile_id == SulabhUserProfile.where(:mobile => current_user.phoneno)[0].id %>
+      <tr>
+        <td>
+        <% if (sulabh_loan_offer && sulabh_loan_offer.sulabh_user_profile_id != nil) %>
+          <%= SulabhUserProfile.find(sulabh_loan_offer.sulabh_user_profile_id).name %>
+        <% end %>
+      </td>
+
+        <td><%= sulabh_loan_offer.behavescore %></td>
+        <td><%= sulabh_loan_offer.offeramount %></td>
+        <td><%= sulabh_loan_offer.expiresby %></td>
+        <td><%= sulabh_loan_offer.offerinterestrate %></td>
+        <td><%= sulabh_loan_offer.paybydate %></td>
+        <td><%= sulabh_loan_offer.interestrate %></td>        
+            <td><%= link_to 'Show', sulabh_loan_offer %></td>
+            <td><%= link_to 'Edit', edit_sulabh_loan_offer_path(sulabh_loan_offer) %></td>
+            <% if (sulabh_loan_request && sulabh_loan_offer) %>
+                <td><%= link_to 'Select Offer', loan_confirm_path(sulabh_loan_request,sulabh_loan_offer), method: :post %> </td>
+            <% elsif sulabh_loan_request == nil %>
+               <% session['soffer'] = sulabh_loan_offer.id %>
+                <td><%= link_to 'Select Loan',"/fluidic/role_selected?srole=Requestor" %> </td>
+             <% end %> 
+          <!-- % else %>
+              <td><%= link_to 'Offer CONFIRMED', loan_confirm_path(sulabh_loan_request,sulabh_loan_offer), method: :post %> </td -->
+          <% end %>
+          </tr>
+        <% end %>
+      <% end %>  
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sulabh loan offer', new_sulabh_loan_offer_path %>

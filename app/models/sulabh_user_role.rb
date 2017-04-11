@@ -1,4 +1,5 @@
 class SulabhUserRole < ActiveRecord::Base
-  belongs_to :username
-  belongs_to :role
+  belongs_to :sulabh_user_profile
+  has_many :sulabh_role
 end
+

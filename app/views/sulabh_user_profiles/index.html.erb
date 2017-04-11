@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Address</th>
       <th>Email</th>
       <th>Mobile</th>
       <th>Aadhar</th>
@@ -24,7 +23,6 @@
     <% @sulabh_user_profiles.each do |sulabh_user_profile| %>
       <tr>
         <td><%= sulabh_user_profile.name %></td>
-        <td><%= sulabh_user_profile.address %></td>
         <td><%= sulabh_user_profile.email %></td>
         <td><%= sulabh_user_profile.mobile %></td>
         <td><%= sulabh_user_profile.aadhar %></td>
@@ -44,4 +42,3 @@
 
 <br>
 
-<%= link_to 'New Sulabh user profile', new_sulabh_user_profile_path %>

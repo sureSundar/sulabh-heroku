@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170408083045) do
+ActiveRecord::Schema.define(version: 20170409201106) do
 
   create_table "sulabh_addresses", force: :cascade do |t|
     t.string   "address1"
@@ -43,8 +43,12 @@ ActiveRecord::Schema.define(version: 20170408083045) do
     t.integer  "offer_id"
     t.integer  "policyno_id"
     t.integer  "financedetails_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "sulabh_loan_request_id"
+    t.integer  "sulabh_loan_offer_id"
+    t.integer  "sulabh_policy_id"
+    t.integer  "sulabh_financial_id"
   end
 
   add_index "sulabh_loan_confirms", ["financedetails_id"], name: "index_sulabh_loan_confirms_on_financedetails_id"
@@ -60,8 +64,9 @@ ActiveRecord::Schema.define(version: 20170408083045) do
     t.decimal  "offerinterestrate"
     t.datetime "paybydate"
     t.decimal  "interestrate"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "sulabh_user_profile_id"
   end
 
   add_index "sulabh_loan_offers", ["username_id"], name: "index_sulabh_loan_offers_on_username_id"
@@ -77,8 +82,9 @@ ActiveRecord::Schema.define(version: 20170408083045) do
     t.decimal  "interest"
     t.decimal  "minpaybyamount"
     t.decimal  "maxpaybyamount"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "sulabh_user_profile_id"
   end
 
   add_index "sulabh_loan_requests", ["username_id"], name: "index_sulabh_loan_requests_on_username_id"
@@ -86,8 +92,9 @@ ActiveRecord::Schema.define(version: 20170408083045) do
   create_table "sulabh_offer_statuses", force: :cascade do |t|
     t.integer  "offer_id"
     t.string   "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "sulabh_loan_offer_id"
   end
 
   add_index "sulabh_offer_statuses", ["offer_id"], name: "index_sulabh_offer_statuses_on_offer_id"
@@ -125,8 +132,10 @@ ActiveRecord::Schema.define(version: 20170408083045) do
     t.integer  "request_id"
     t.integer  "offer_id"
     t.string   "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "sulabh_loan_request_id"
+    t.integer  "sulabh_loan_offer_id"
   end
 
   add_index "sulabh_req_offer_maps", ["offer_id"], name: "index_sulabh_req_offer_maps_on_offer_id"
@@ -135,8 +144,9 @@ ActiveRecord::Schema.define(version: 20170408083045) do
   create_table "sulabh_request_statuses", force: :cascade do |t|
     t.integer  "request_id"
     t.string   "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "sulabh_loan_request_id"
   end
 
   add_index "sulabh_request_statuses", ["request_id"], name: "index_sulabh_request_statuses_on_request_id"
@@ -168,8 +178,9 @@ ActiveRecord::Schema.define(version: 20170408083045) do
   create_table "sulabh_user_roles", force: :cascade do |t|
     t.integer  "username_id"
     t.integer  "role_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "sulabh_user_profile_id"
   end
 
   add_index "sulabh_user_roles", ["role_id"], name: "index_sulabh_user_roles_on_role_id"

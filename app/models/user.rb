@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 has_one_time_password
 validates :email, :presence => false, :email => false
 #validates_presence_of :phoneno
-#validates_uniqueness_of :phoneno
+validates_uniqueness_of :phoneno
 #validates_presence_of :aadhar
 #validates_uniqueness_of :aadhar
 #validates :aadhar, length: { is: 12 }

@@ -13,8 +13,9 @@
 	  <% end %>  
 
 	  <div class="field">
-		<%= f.label :username_id %><br>
-		<%= f.text_field :username_id,:value => current_user.phoneno, :disabled => true %>
+		<%= f.label :sulabh_user_profile_id %><br>
+		<%= f.hidden_field :sulabh_user_profile_id, :value => SulabhUserProfile.where(:mobile => current_user.phoneno)[0].id %>
+		<%= SulabhUserProfile.where(:mobile => current_user.phoneno)[0].name %>
 	  </div>
 	  <div class="field">
 		<%= f.label :behavescore %><br>
