@@ -1,0 +1,70 @@
+/*Whole Body*/
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+
+/* Typography*/
+h1,h2,h3,h4,h5,h6,p {
+	font-family: 'Roboto', sans-serif;
+}
+
+/*Center-Align*/
+.center-header {
+    text-align: center;
+}
+
+/*Button*/
+.btn {
+	
+	 font-family: 'Roboto', sans-serif;
+}
+
+/*Button primary*/
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: #8064A2 !important;
+    border-color: #8064A2;   
+}
+
+
+/* Login Form*/
+.form-signin {
+  max-width: 330px;
+  //padding: 10px;
+  margin: 0 auto;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="phone"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

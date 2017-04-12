@@ -10,6 +10,19 @@
  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.12.4.js"></script>
   <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS 
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-grid.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-reboot.css">
+-->
+<!--Roboto Font-->
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+<!-- Custom CSS Files-->
+<!--link rel="stylesheet" type="text/css" href="css/custom.css"-->  
 </head>
 <body>
 
@@ -37,7 +50,7 @@
 	<div class="navbar-brand d-inline-block align-bottom">
 <%= if user_signed_in? 
 link_to(SulabhUserProfile.where(:mobile => current_user.phoneno)[0].name,edit_sulabh_user_profile_path(SulabhUserProfile.where(:mobile => current_user.phoneno)[0].id),:class => "navbar-brand d-inline-block align-top",height: "50")
- end %><%=link_to("Role : [#{session['srole']}]","/fluidic/requestflow", :class=> "navbar-brand d-inline-block align-top",height: "50") %>
+ end %><%=session['srole'] != nil ? link_to("Role : [#{session['srole']}]","/fluidic/requestflow", :class=> "navbar-brand d-inline-block align-top",height: "50") : "" %>
 	</div>
 	</div>
 

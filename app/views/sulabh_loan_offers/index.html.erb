@@ -1,6 +1,6 @@
-  <p id="notice"><%= notice %></p>
+  
 
-  <h1>Listing Sulabh Loan Offers</h1>
+  <h1>Loan Offers</h1>
 
   <table class="table table-responsive table-sm table-hover table-bordered">
     <thead>
@@ -20,7 +20,11 @@
           <td><%= sulabh_loan_offer.offerinterestrate %></td>
           
           <td><%= link_to 'Show', sulabh_loan_offer %></td>
-          <td><%= link_to 'Apply', dew_requestor_offerLR_path(sulabh_loan_offer) %></td>
+          <% if session['srole'] === "Requestor" %>
+            <td><%= link_to 'Apply', dew_requestor_offerLR_path(sulabh_loan_offer) %></td>
+          <% elsif session['srole'] === "Provider" %>
+            
+          <% end %>
           <!--td><%= link_to 'Edit', edit_sulabh_loan_offer_path(sulabh_loan_offer) %></td>
           <td><%= link_to 'Destroy', sulabh_loan_offer, method: :delete, data: { confirm: 'Are you sure?' } %></td-->
         </tr>
@@ -30,4 +34,4 @@
 
   <br>
 
-  <%= link_to 'New Sulabh loan offer', new_sulabh_loan_offer_path %>
+  <!-- %= link_to 'New Sulabh loan offer', new_sulabh_loan_offer_path % -->

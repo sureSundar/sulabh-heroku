@@ -2,20 +2,22 @@
 <div class="row align-items-center">
 <div class="col-md-4"></div>
 <div class="col-md-4">
-<h2>Sulabh Log in</h2>
+
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label "phoneno" %><br />
-    <%= f.text_field :phoneno, autofocus: true , placeholder: "10 digit ph.no" %>
-  </div>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :class => "form-signin" } ) do |f| %>
+    
+    <h2 class="center-header">Sulabh sign in</h2>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+    <%= f.label "phoneno" , :class => "sr-only" %>
+    <%= f.text_field :phoneno, autofocus: true , placeholder: "10 digit ph.no",:id=>"inputPhone", :type => "phone", :class =>"form-control" %>
+  
+
+  
+    <%= f.label :password, :class => "sr-only" %>
+    <%= f.password_field :password, autocomplete: "off",:class => "form-control", :id => "inputPassword" , placeholder: "Password" %>
+  
 
   <% if devise_mapping.rememberable? -%>
     <div class="field">
@@ -24,10 +26,25 @@
     </div>
   <% end -%>
 
-  <div class="actions">
-    <%= f.submit "Log in",:class=> "btn btn-primary" %>
-  </div>
+
+    <%= f.submit "Sign In",:class=> "btn btn-primary btn-md btn-block" %>
+
 <% end %>
+
+    <!-- form class="form-signin">
+
+      <h2 class="center-header">Please sign in</h2>
+
+      <label for="inputPhone" class="sr-only">Email address</label>
+      <input type="phone" id="inputPhone" class="form-control" placeholder="Phone Number">
+
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password">
+      
+      <button type="button" class="btn btn-primary btn-md btn-block">Sign In</button>
+
+    </form -->
+
 
 <%= render "devise/shared/links" %>
 </div>

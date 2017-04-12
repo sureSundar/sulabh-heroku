@@ -3,13 +3,13 @@ def dashboard
     	@su = setSUPinSession
 
  	    @sulabh_loan_requests  = SulabhLoanRequest.where.not( :sulabh_user_profile_id => @su.id)
-      #@openLRs_arr = @openLRs.to_a
-      #@openLRs_arr.delete_if { |c| c.sulabh_request_statuses.where(:status => "CONFIRMED").count > 0 } 	
+      @openLRs_arr = @openLRs.to_a
+      @openLRs_arr.delete_if { |c| c.sulabh_request_statuses.where(:status => "CONFIRMED").count > 0 } 	
   	  
   	  # => @sulabh_loan_offers = SulabhLoanOffer.where(:sulabh_user_profile_id != @su.id && 'expiresby >= :timenow',:timenow => Time.now )
   	  @sulabh_loan_offers = SulabhLoanOffer.where(:sulabh_user_profile_id => @su.id).where('expiresby >= :timenow',:timenow => Time.now )
-  	  #@openoffers_arr = @openoffers.to_a
-      #@openoffers_arr.delete_if { |c| c.sulabh_offer_statuses.where(:status => "CONFIRMED").count > 0 } 	
+  	  @openoffers_arr = @openoffers.to_a
+      @openoffers_arr.delete_if { |c| c.sulabh_offer_statuses.where(:status => "CONFIRMED").count > 0 } 	
  end 	  
   def offer
   end
