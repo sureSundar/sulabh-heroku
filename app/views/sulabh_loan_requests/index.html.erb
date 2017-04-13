@@ -18,21 +18,43 @@
 
   <tbody>
     <% @sulabh_loan_requests.each do |sulabh_loan_request| %>
-      <tr>
+        <% if session['srole'] === "Requestor" %>
+        <tr>
         <td><%= sulabh_loan_request.amount %></td>
         <td><%= sulabh_loan_request.mininterest %></td>
         <td><%= sulabh_loan_request.maxinterest %></td>
         <td><%= sulabh_loan_request.interest %></td>
         <td><%= link_to 'Show', sulabh_loan_request %></td>
-        <% if session['srole'] === "Requestor" %>
-          <td><%= link_to sulabh_loan_request.sulabh_loan_offers.count,dew_requestor_showOffersLR_path(sulabh_loan_request),:class=>"btn btn-primary" %></td>
-          <td><%= link_to 'Destroy', sulabh_loan_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% elsif session['srole'] === "Provider" && sulabh_loan_request.interest != 0 %>
-          <td><%= link_to sulabh_loan_request.sulabh_loan_offers.count,dew_provider_LRoffer_path(sulabh_loan_request),:class=>"btn btn-primary" %></td>
+        <td><%= link_to sulabh_loan_request.sulabh_loan_offers.count,dew_requestor_showOffersLR_path(sulabh_loan_request),:class=>"btn btn-primary" %></td>
+        <td><%= link_to 'Destroy', sulabh_loan_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% elsif session['srole'] === "Provider" %>
+          <% if sulabh_loan_request.interest.blank? == true %>
+            <tr>
+            <td><%= sulabh_loan_request.amount %></td>
+            <td><%= sulabh_loan_request.mininterest %></td>
+            <td><%= sulabh_loan_request.maxinterest %></td>
+            <td><%= sulabh_loan_request.interest %></td>
+            <td><%= link_to 'Show', sulabh_loan_request %></td>
+            <!-- td><%= link_to 'Destroy', sulabh_loan_request, method: :delete, data: { confirm: 'Are you sure?' } %></td-->
+            <td><%= link_to sulabh_loan_request.sulabh_loan_offers.count,dew_provider_LRoffer_path(sulabh_loan_request),:class=>"btn btn-primary" %></td>
+            </tr>
+          <% else %>
+             <!-- tr>
+            <td><%= sulabh_loan_request.amount %></td>
+            <td><%= sulabh_loan_request.mininterest %></td>
+            <td><%= sulabh_loan_request.maxinterest %></td>
+            <td><%= sulabh_loan_request.interest %></td>
+            <td><%= link_to 'Show', sulabh_loan_request %></td>
+            <td><%= link_to sulabh_loan_request.sulabh_loan_offers.count,dew_requestor_showOffersLR_path(sulabh_loan_request),:class=>"btn btn-primary" %></td>
+            <td><%= link_to 'Destroy', sulabh_loan_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to sulabh_loan_request.sulabh_loan_offers.count,dew_provider_LRoffer_path(sulabh_loan_request),:class=>"btn btn-primary" %></td>
+            </tr -->
+            <% end %>
           <% end %>
         <!-- td><%= link_to 'Edit', edit_sulabh_loan_request_path(sulabh_loan_request) %></td-->
         
-      </tr>
+      
     <% end %>
   </tbody>
 </table>

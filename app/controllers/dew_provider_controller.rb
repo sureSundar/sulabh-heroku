@@ -3,12 +3,12 @@ def dashboard
     	@su = setSUPinSession
 
  	    @sulabh_loan_requests  = SulabhLoanRequest.where.not( :sulabh_user_profile_id => @su.id)
-      @openLRs_arr = @openLRs.to_a
+      @openLRs_arr = @sulabh_loan_requests.to_a
       @openLRs_arr.delete_if { |c| c.sulabh_request_statuses.where(:status => "CONFIRMED").count > 0 } 	
   	  
   	  # => @sulabh_loan_offers = SulabhLoanOffer.where(:sulabh_user_profile_id != @su.id && 'expiresby >= :timenow',:timenow => Time.now )
   	  @sulabh_loan_offers = SulabhLoanOffer.where(:sulabh_user_profile_id => @su.id).where('expiresby >= :timenow',:timenow => Time.now )
-  	  @openoffers_arr = @openoffers.to_a
+  	  @openoffers_arr = @sulabh_loan_offers.to_a
       @openoffers_arr.delete_if { |c| c.sulabh_offer_statuses.where(:status => "CONFIRMED").count > 0 } 	
  end 	  
   def offer
@@ -26,13 +26,17 @@ def dashboard
   		@sulabh_loan_offer.offeramount = @sulabh_loan_request.amount
   		@sulabh_loan_offer.paybydate = @sulabh_loan_request.paybydate
   		@sulabh_loan_offer.expiresby = @sulabh_loan_request.requiredby
-  	    @sulabh_loan_offer.save
+  	  @sulabh_loan_offer.save
   	    
   	    @map.sulabh_loan_offer_id = @sulabh_loan_offer.id
   	    @map.save
 
   		@notice = 'Your prefilled Offer Application form'
-		render :file => "sulabh_loan_offers/_form.html"  		
+		  #render :file => "sulabh_loan_offers/_form.html"  	
+      respond_to do |format|
+          format.html {redirect_to  edit_sulabh_loan_offer_path(@sulabh_loan_offer.id), notice: 'Your prefilled Offer Application form'}
+      end
+      
 
   end
 

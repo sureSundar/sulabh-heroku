@@ -55,7 +55,7 @@ class DewRequestorController < ApplicationController
       @map = @sulabh_loan_offer.sulabh_req_offer_maps.build
       
 
-  		@sulabh_loan_request = @sulabh_loan_offer.sulabh_loan_requests.new
+  		@sulabh_loan_request = (@sulabh_loan_offer.sulabh_loan_requests.count == 1 && @sulabh_loan_offer.sulabh_loan_requests[0]) || @sulabh_loan_offer.sulabh_loan_requests.new
   		@sulabh_loan_request.sulabh_user_profile_id = @su["id"]
       @sulabh_loan_request.interest = @sulabh_loan_offer.offerinterestrate
   		@sulabh_loan_request.amount = @sulabh_loan_offer.offeramount
