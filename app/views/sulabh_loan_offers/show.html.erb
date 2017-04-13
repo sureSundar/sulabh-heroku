@@ -1,3 +1,4 @@
+<div class="center-header">
 <p id="notice"><%= notice %></p>
 
 <div class="field">
@@ -29,11 +30,14 @@
   <strong>Paybydate:</strong>
   <%= @sulabh_loan_offer.paybydate %>
 </p>
-
-<p>
-  <strong>Interestrate:</strong>
-  <%= @sulabh_loan_offer.interestrate %>
-</p>
-
-<%= link_to 'Edit', edit_sulabh_loan_offer_path(@sulabh_loan_offer) %> |
-<%= link_to 'Back', sulabh_loan_offers_path %>
+<% if session['srole'] === "Requestor" %>
+  <div><%= link_to 'Confirm Offer', dew_requestor_offerLR_path(@sulabh_loan_offer),:class => "btn btn-info" %></div>          
+<% elsif session['srole'] === "Provider" %>
+            
+<% end %>
+<% if session['srole'] === "Provider" %>
+  <%= link_to 'Back to Offers', dew_provider_dashboard_path, :class => "btn btn-success" %>
+<% elsif session['srole'] === "Requestor" %>
+  <%= link_to 'Back to Loans', dew_requestor_dashboard_path , :class => "btn btn-warning" %>
+<% end %>
+</div>

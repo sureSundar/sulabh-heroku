@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'dew_provider/offer'
 
   get 'dew_provider/(:id)/LRoffer', :to => 'dew_provider#LRoffer', :as => '/dew_provider/LRoffer'
+  get 'dew_provider/(:id)/showLROffer', :to => 'dew_provider#showLROffer', :as => '/dew_provider/showLROffer'
 
   get 'fluidic/requestflow'
 

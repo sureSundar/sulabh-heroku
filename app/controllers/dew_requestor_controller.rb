@@ -15,7 +15,7 @@ class DewRequestorController < ApplicationController
   	  @sulabh_loan_offers = SulabhLoanOffer.where.not(:sulabh_user_profile_id => @su.id).where('expiresby >= :timenow',:timenow => Time.now )
       
   	  @openoffers_arr = @sulabh_loan_offers.to_a
-      @openoffers_arr.delete_if { |c| c.sulabh_offer_statuses.where(:status => "CONFIRMED").count > 0 } 	
+      @openoffers_arr.delete_if { |c| c.sulabh_offer_statuses.where(:status => "CONFIRMED").count > 0 ||  c.sulabh_loan_requests.count > 0 } 	
       @sulabh_loan_offers = @openoffers_arr
       #@sulabh_loan_offers = @openoffers_arr && @openoffers_arr.to_h
       @notice = "Showing all your Open Loan Requests and Available Open Offers from others.."
@@ -57,6 +57,7 @@ class DewRequestorController < ApplicationController
 
   		@sulabh_loan_request = (@sulabh_loan_offer.sulabh_loan_requests.count == 1 && @sulabh_loan_offer.sulabh_loan_requests[0]) || @sulabh_loan_offer.sulabh_loan_requests.new
   		@sulabh_loan_request.sulabh_user_profile_id = @su["id"]
+      @sulabh_loan_request.behavescore = getBehaviourScore(@su["accountno"])
       @sulabh_loan_request.interest = @sulabh_loan_offer.offerinterestrate
   		@sulabh_loan_request.amount = @sulabh_loan_offer.offeramount
   		@sulabh_loan_request.paybydate = @sulabh_loan_offer.paybydate
@@ -179,14 +180,7 @@ def autoDisburse(srcAcc,destAcc,amt,payeedesc,payeeId,tot)
   #tot="Auto Dispursement against Loan : #{accept_obj.loan} "
   #tot="school fee payment"
 
-puts "Triggering AuthToken API"
-authToken = ICICIAppathonAPIXway.new("authToken")
-@aT = JSON.parse(authToken.getResponse)[0]["token"]
-@token = @aT
-@c_id = 'suresundar@gmail.com'
-@password = '4RV6JENO'
-
-puts @aT
+@token = getAPITokern
 
 puts ""
 puts "Triggering FundTransfer API..."
@@ -198,6 +192,38 @@ puts @fTResult
 
 @notice
 
+end
+
+def getBehaviourScore(act_no)
+
+    @token = getAPITokern
+
+    puts ""
+    puts "Triggering BehaviourScore API..."
+    bScoreObj= ICICIAppathonAPIXway.new("behaviourScore")
+    @c_id = 'suresundar@gmail.com'
+    options_ctano = { query: { client_id: @c_id , token: @token , accountno: act_no }}
+    @bScoreResult = bScoreObj.getResponseWithOptions(options_ctano)
+    puts @bScoreResult
+    
+    if @bScoreResult[1]["score"] != nil 
+        return @bScoreResult["score"] 
+    else
+        return nil
+    end
+
+end
+
+def getAPITokern
+    puts "Triggering AuthToken API"
+    authToken = ICICIAppathonAPIXway.new("authToken")
+    @aT = JSON.parse(authToken.getResponse)[0]["token"]
+    @token = @aT
+    @c_id = 'suresundar@gmail.com'
+    @password = '4RV6JENO'
+
+    puts @aT
+    @aT
 end
 
 # U tility functions

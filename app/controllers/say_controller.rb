@@ -75,9 +75,9 @@ puts "self.Token = "+ @token
 balEnq = ICICIAppathonAPIXway.new("balanceEnquiry")
 puts "Act No :" + act_no
 puts "C ID : " + @c_id
-options_cta = { query: { client_id: @c_id , token: @token , account_no: act_no }}
-@result = balEnq.getResponseWithOptions(options_cta)
-puts @result
+options_cta = { query: { client_id: @c_id , token: @token , accountno: act_no }}
+@balEnqResult = balEnq.getResponseWithOptions(options_cta)
+puts @balEnqResult
 
 puts "Triggering Account Summary API..."
 options_ctca = {query: { client_id: @c_id , token: @token, custid: cusid, accountno: act_no}}

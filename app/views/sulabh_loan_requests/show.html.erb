@@ -1,8 +1,9 @@
+<div class="center-header">
 <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Username:</strong>
-  <%= @sulabh_loan_request.username_id %>
+  <%= SulabhUserProfile.find(@sulabh_loan_request.sulabh_user_profile_id).name %>
 </p>
 
 <p>
@@ -35,20 +36,15 @@
   <%= @sulabh_loan_request.maxinterest %>
 </p>
 
-<p>
-  <strong>Interest:</strong>
-  <%= @sulabh_loan_request.interest %>
-</p>
+ <% if session['srole'] === "Requestor" %>
+  
+<% elsif session['srole'] === "Provider" %>
+  <!-- div><%= link_to 'Confirm Request', dew_requestor_offerLR_path(@sulabh_loan_offer),:class => "btn btn-info" %></div--> 
+<% end %>
+<% if session['srole'] === "Provider" %>
+  <%= link_to 'Back to Offers', dew_provider_dashboard_path, :class => "btn btn-success" %>
+<% elsif session['srole'] === "Requestor" %>
+  <%= link_to 'Back to Loans', dew_requestor_dashboard_path , :class => "btn btn-warning" %>
+<% end %>
 
-<p>
-  <strong>Minpaybyamount:</strong>
-  <%= @sulabh_loan_request.minpaybyamount %>
-</p>
-
-<p>
-  <strong>Maxpaybyamount:</strong>
-  <%= @sulabh_loan_request.maxpaybyamount %>
-</p>
-
-<%= link_to 'Edit', edit_sulabh_loan_request_path(@sulabh_loan_request) %> |
-<%= link_to 'Back', sulabh_loan_requests_path %>
+</div>

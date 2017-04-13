@@ -1,5 +1,10 @@
 <div class="container">
 	<div class="row">
+		<div class="col-md-12"
+			<p id="notice"><%= notice || @notice %></p>
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-md-6 btn btn-outline-warning">
 		<!-- My open Requests container -->
 			<%= render :file => "sulabh_loan_requests/index.html" %>
@@ -8,6 +13,9 @@
 		<div class="col-md-6 btn btn-outline-success">
 		<!-- My open Offers container -->
 			<%= render :file => "sulabh_loan_offers/index.html" %>
+			<% if params[:action] === "showLROffer" %>
+				<%= link_to "Back", dew_provider_dashboard_path, :class => "btn btn-primary" %>
+			<% end %>			
 		</div>
 	</div>
 	<div class="row">

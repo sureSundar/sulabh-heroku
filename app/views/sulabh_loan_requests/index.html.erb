@@ -6,12 +6,13 @@
   <thead>
     <tr>
       <th>Amount</th>
-      <th>Mininterest</th>
-      <th>Maxinterest</th>
-      <th>Interest</th>
+      <th colspan=2> Interest Range </th>
+       <th>Best Offer</th>
       <th>Details</th>
       <th>Offers</th>
-      <th colspan="2"></th>
+      <% if session['srole'] === "Requestor" %>
+        <th colspan="2"></th>
+      <% end %>
     </tr>
   </thead>
 
@@ -23,10 +24,17 @@
         <td><%= sulabh_loan_request.amount %></td>
         <td><%= sulabh_loan_request.mininterest %></td>
         <td><%= sulabh_loan_request.maxinterest %></td>
-        <td><%= sulabh_loan_request.interest %></td>
-        <td><%= link_to 'Show', sulabh_loan_request %></td>
+        <td>
+          <%= minint = 100
+              sulabh_loan_request.sulabh_loan_offers.each do |k|
+                minint = k.offerinterestrate < minint ? k.offerinterestrate : minint
+              end
+              minint
+         %>
+         </td>
+        <td><%= link_to '&#9776;'.html_safe, sulabh_loan_request,:class => "btn btn-success"%></td>
         <td><%= link_to sulabh_loan_request.sulabh_loan_offers.count,dew_requestor_showOffersLR_path(sulabh_loan_request),:class=>"btn btn-primary" %></td>
-        <td><%= link_to 'Destroy', sulabh_loan_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'X', sulabh_loan_request, method: :delete, data: { confirm: 'Are you sure?' } , :class => "btn btn-danger" %></td>
         </tr>
         <% elsif session['srole'] === "Provider" %>
           <% if sulabh_loan_request.interest.blank? == true %>
@@ -34,10 +42,30 @@
             <td><%= sulabh_loan_request.amount %></td>
             <td><%= sulabh_loan_request.mininterest %></td>
             <td><%= sulabh_loan_request.maxinterest %></td>
-            <td><%= sulabh_loan_request.interest %></td>
-            <td><%= link_to 'Show', sulabh_loan_request %></td>
+            <td>
+          <%= minint = 100
+              sulabh_loan_request.sulabh_loan_offers.each do |k|
+                minint = k.offerinterestrate < minint ? k.offerinterestrate : minint
+              end
+              minint
+         %>
+         </td>
+
+            <td><%= link_to "&#9776;".html_safe, sulabh_loan_request,:class => "btn btn-success" %></td>
             <!-- td><%= link_to 'Destroy', sulabh_loan_request, method: :delete, data: { confirm: 'Are you sure?' } %></td-->
-            <td><%= link_to sulabh_loan_request.sulabh_loan_offers.count,dew_provider_LRoffer_path(sulabh_loan_request),:class=>"btn btn-primary" %></td>
+            <% if (sulabh_loan_request.sulabh_loan_offers.count == 0) %>
+                <td><%= link_to "+",dew_provider_LRoffer_path(sulabh_loan_request),:class=>"btn btn-primary" %></td>
+            <% else %>
+                <td>
+              <%=
+                  minint = 100
+                  sulabh_loan_request.sulabh_loan_offers.each do |k|
+                    minint = k.offerinterestrate < minint ? k.offerinterestrate : minint
+                  end
+                 link_to "Re-Offer",dew_provider_LRoffer_path(sulabh_loan_request),:class=>"btn btn-primary",:title => "#{sulabh_loan_request.sulabh_loan_offers.count} Offers Receieved.Running Min Interest : #{minint}" 
+                %>
+                 </td>
+            <% end %>
             </tr>
           <% else %>
              <!-- tr>

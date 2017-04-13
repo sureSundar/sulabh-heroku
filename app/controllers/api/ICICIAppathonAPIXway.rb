@@ -21,8 +21,8 @@ class ICICIAppathonAPIXway
 		@endpoint = '/banking/icicibank/participantmapping'
 		@options = { query: { client_id: @c_id } }	
 	elsif (apikey === "balanceEnquiry")
-		@base_uri = 'https://retailbanking.mybluemix.net/banking'
-		@endpoint = '/icicibank/balanceenquiry'		
+		@base_uri = 'https://retailbanking.mybluemix.net'
+		@endpoint = '/banking/icicibank/balanceenquiry'		
 	elsif (apikey === "actSummary")
 		@base_uri = 'https://retailbanking.mybluemix.net'
 		@endpoint = '/banking/icicibank/account_summary'
@@ -48,7 +48,10 @@ class ICICIAppathonAPIXway
      puts "Insite getResponse : Options = "
      puts @options
 
-    self.class.get(@base_uri + @endpoint, @options)
+     @result = self.class.get(@base_uri + @endpoint, @options)
+     puts @result
+     @result
+
   end  
   def getResponseWithOptions(options)
 	puts "Insite getResponseWithOptions : " 
@@ -56,7 +59,9 @@ class ICICIAppathonAPIXway
 	puts @endpoint
 	puts options
 	 
-	self.class.get(@base_uri + @endpoint, options)
+	@result = self.class.get(@base_uri + @endpoint, options)
+	puts @result
+	@result
   end
 end
 =begin

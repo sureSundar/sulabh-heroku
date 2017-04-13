@@ -1,4 +1,4 @@
-<%= form_for(@sulabh_loan_offer) do |f| %>
+<%= form_for(@sulabh_loan_offer,:html => { :class => "form-signin" }) do |f| %>
   <% if @sulabh_loan_offer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@sulabh_loan_offer.errors.count, "error") %> prohibited this sulabh_loan_offer from being saved:</h2>
@@ -17,30 +17,58 @@
     <%= SulabhUserProfile.where(:mobile => current_user.phoneno)[0].name %>
     </div>  
   <div class="field">
-    <%= f.label :behavescore %><br>
-    <%= f.text_field :behavescore %>
+    <%= f.label "Behaviour Score" %>
+    <%= f.text_field :behavescore,:class=> "form-control",:placeholder => "Behaviour Score",:readonly => "true"  %>
+    </div>
+  <div class="field">
+    <%= f.text_field :offeramount, :class=> "form-control",:placeholder => "Offer Amount" %>
   </div>
   <div class="field">
-    <%= f.label :offeramount %><br>
-    <%= f.text_field :offeramount %>
+    <%= f.text_field :expiresby , :id => "expiresby_fld", :class=> "form-control",:placeholder => "Offer Expires on" %>
   </div>
   <div class="field">
-    <%= f.label :expiresby %><br>
-    <%= f.datetime_select :expiresby %>
+    <%= f.text_field :offerinterestrate , :class=> "form-control",:placeholder => "Offer Interest Rate" %>
   </div>
   <div class="field">
-    <%= f.label :offerinterestrate %><br>
-    <%= f.text_field :offerinterestrate %>
-  </div>
-  <div class="field">
-    <%= f.label :paybydate %><br>
-    <%= f.datetime_select :paybydate %>
-  </div>
-  <div class="field">
-    <%= f.label :interestrate %><br>
-    <%= f.text_field :interestrate %>
+    <%= f.text_field :paybydate ,:id=> "paybydate_fld" , :class=> "form-control",:placeholder => "Offer Pay by Date" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class=> "btn btn-primary btn-md btn-block"%>
   </div>
 <% end %>
+
+<script>
+var dateToday = new Date();
+var dates = $("#expiresby_fld").datepicker({
+  dateFormat: "yy-mm-dd",
+    defaultDate: "+1w",
+  maxDate: "+1m",
+    changeMonth: true,
+    //numberOfMonths: 3,
+    minDate: dateToday
+    /*
+    onSelect: function(selectedDate) {
+        var option = this.id == "from" ? "minDate" : "maxDate",
+            instance = $(this).data("datepicker"),
+            date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+        dates.not(this).datepicker("option", option, date); 
+    }*/
+});
+var dates1 = $("#paybydate_fld").datepicker({
+    defaultDate: "+1w",
+    dateFormat: "yy-mm-dd",
+  maxDate: "+12m",
+    changeMonth: true,
+    //numberOfMonths: 3,
+    minDate: dateToday
+    /*
+    onSelect: function(selectedDate) {
+        var option = this.id == "from" ? "minDate" : "maxDate",
+            instance = $(this).data("datepicker"),
+            date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+        dates1.not(this).datepicker("option", option, date); 
+    } 
+    */
+});
+
+</script>
