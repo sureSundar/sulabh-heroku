@@ -1,4 +1,4 @@
-<%= form_for(@sulabh_user_profile) do |f| %>
+<%= form_for(@sulabh_user_profile, :class => "form-signin") do |f| %>
   <% if @sulabh_user_profile.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@sulabh_user_profile.errors.count, "error") %> prohibited this sulabh_user_profile from being saved:</h2>
@@ -11,64 +11,59 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    
+    <%= f.text_field :name,:placeholder => "Name",:class => "form-control" %>
   </div>
   <div class="field">
  <%= f.fields_for :sulabh_addresses do |ff| %>
   <div>
-    <%= ff.label :address1 %>
-    <%= ff.text_field :address1 %>
-	<%= ff.label :address2 %>
-    <%= ff.text_field :address2 %>
-	<%= ff.label :address3 %>
-    <%= ff.text_field :address3 %>
-	<%= ff.label :city %>
-    <%= ff.text_field :city %>
-	<%= ff.label :pincode %>
-    <%= ff.text_field :pincode %>
-	<%= ff.label :country %>
-    <%= ff.text_field :country %>
+    <%= ff.text_field :address1,:placeholder => "Address1",:class => "form-control" %>
+	
+    <%= ff.text_field :address2,:placeholder => "Address2",:class => "form-control" %>
+	
+    <%= ff.text_field :address3,:placeholder => "Address3",:class => "form-control" %> 
+	
+    <%= ff.text_field :city,:placeholder => "City",:class => "form-control" %>
+	
+    <%= ff.text_field :pincode ,:placeholder => "Pincode",:class => "form-control" %>
+	
+    <%= ff.text_field :country ,:placeholder => "Country",:class => "form-control" %>
   </div>
   <% end %>
   </div>
   <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    
+    <%= f.text_field :email,:placeholder => "Email",:class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :mobile %><br>
-    <%= f.text_field :mobile %>
+    <%= f.text_field :mobile,:placeholder => "10 digit Phone no",:class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :aadhar %><br>
-    <%= f.text_field :aadhar %>
+    
+    <%= f.text_field :aadhar,:placeholder => "12 digit Aadhar no",:class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :accountno %><br>
-    <%= f.text_field :accountno %>
+    <%= f.text_field :accountno,:placeholder => "16 digit Bank Account No",:class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :ifsc %><br>
-    <%= f.text_field :ifsc %>
+    <%= f.text_field :ifsc,:placeholder => "Bank IFSC Code",:class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :bank %><br>
-    <%= f.text_field :bank %>
+    
+    <%= f.text_field :bank ,:placeholder => "Bank Name",:class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :locale %><br>
-    <%= f.text_field :locale %>
+    <%= f.text_field :locale,:placeholder => "2 char : ta-tamil,te-Telugu,hi-Hindi,en-English",:class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :occupation %><br>
-    <%= f.text_field :occupation %>
+    
+    <%= f.text_field :occupation,:placeholder => "Occupation",:class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :monthlyrevenue %><br>
-    <%= f.text_field :monthlyrevenue %>
+    
+    <%= f.text_field :monthlyrevenue,:placeholder => "Monthly Revenue",:class => "form-control" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Update Profile", :class => "btn btn-primary btn-block" %>
   </div>
 <% end %>

@@ -1,0 +1,92 @@
+      
+      	 <% if session['srole'] != "Agent" %>
+      	 	<% session['aadhar'] = current_user.aadhar %>
+
+      	 <% else %>
+      	 	<% session['aadhar'] = params[:Aadhar] %>
+      	 <% end %>
+      	 <%= puts "Picked up Aadhar : " %>
+      	 <%= puts session['aadhar'] %>
+		<%
+          @summary = SulabhSaving.where(:aadhaar => session['aadhar']).group(:aadhaar,:sulabh_loan_confirm_id,:trans_type).select(:aadhaar,:sulabh_loan_confirm_id,:trans_type,"sum(debitAmount) as total_savings").order("total_savings desc").collect {|sav_act| [aadhaar: sav_act.aadhaar,slc: sav_act.sulabh_loan_confirm_id,tt: sav_act.trans_type,sum: sav_act.total_savings]}
+          debug @summary 
+          @msav_bal = @summary.select { |k|  
+             (k[0][:aadhaar ] == session['aadhar'] and k[0][:tt] == "MSAV") ? k[0][:sum] : nil }
+      %>
+      Micro Savings :  <%= link_to @msav_bal[0] != nil ? @msav_bal[0][0][:sum] : 0   ,"/dew_agent/reconcile",:class => "btn btn-success" %>
+<table class="table table-responsive table-sm table-hover table-bordered">
+  <thead>
+    <tr>
+
+      <th>Amount</th>
+      <th colspan=2> Interest Range </th>
+       <th>Best Offer</th>
+      <th>Details</th>
+      <th>Offers</th>
+        <th> LC ID </th>
+        <th>Make Offer/Repay</th>
+        <th>PAID</th>
+        <th>DUE</th>
+        <th>MPAY</th>
+        <th>MPAYEMI</th>
+    </tr>
+  </thead>
+
+
+  <tbody>
+
+          <% @sulabh_loan_requests && @sulabh_loan_requests.each do |sulabh_loan_request| %>
+              <% if sulabh_loan_request.sulabh_loan_confirms.count > 0 %>   
+                 <tr>
+                <td><%= sulabh_loan_request.amount %></td>
+                <td><%= sulabh_loan_request.mininterest %></td>
+                <td><%= sulabh_loan_request.maxinterest %></td>
+                <td><%= sulabh_loan_request.interest %></td> 
+                <td><%= link_to "&#9776; #{sulabh_loan_request.sulabh_loan_confirms.count}".html_safe,"/dew_requestor/#{sulabh_loan_request.sulabh_loan_confirms[0].sulabh_loan_request_id}/#{sulabh_loan_request.sulabh_loan_confirms[0].sulabh_loan_offer_id}/loan_confirm",:class => "btn btn-success" %></td>
+                
+                <td><%= link_to sulabh_loan_request.sulabh_loan_offers.count,dew_requestor_showOffersLR_path(sulabh_loan_request),:class=>"btn btn-primary" %></td>
+                <td><%= sulabh_loan_request.sulabh_loan_confirms[0].id %></td> 
+                <!--td><%= link_to 'Destroy', sulabh_loan_request, method: :delete, data: { confirm: 'Are you sure?' } %></td-->
+                <% if sulabh_loan_request.sulabh_loan_offers.count == 0 %>
+                      <td><%= link_to sulabh_loan_request.sulabh_loan_offers.count,dew_provider_LRoffer_path(sulabh_loan_request),:class=>"btn btn-secondary" %></td>
+                  <% else %>
+
+                  <% if sulabh_loan_request.sulabh_loan_confirms.count >0 %>
+                        <%= form_for(SulabhSaving.new,html: {:id => "lc_form_#{sulabh_loan_request.sulabh_loan_confirms[0].id}" } ) do |f| %>
+                          <%= f.hidden_field :sulabh_loan_confirm_id, :value => sulabh_loan_request.sulabh_loan_confirms[0].id %>
+                          <%= f.hidden_field :aadhaar,:value => session['aadhar'] %>
+
+                      <td> <%= f.text_field :debitAmount %></td>
+                      <td>
+                        <%
+                            @mpay_bal = @summary.select { |k|  
+             (k[0][:aadhaar ] == session['aadhar'] && k[0][:tt] == "MPAY" && k[0][:slc] == sulabh_loan_request.sulabh_loan_confirms[0].id) ? k[0][:sum] : nil }
+                         %>
+                             <%= @mpay_bal[0] != nil ? @mpay_bal[0][0][:sum] : 0 %>
+                          
+                      </td>
+                      <td>
+                       <%= sulabh_loan_request.amount - ( @mpay_bal[0] != nil ? @mpay_bal[0][0][:sum] : 0 )%>  
+                      </td>
+                      <td>
+                        <%= f.hidden_field :trans_type, :id => "lc_form_tt_#{sulabh_loan_request.sulabh_loan_confirms[0].id}" %>                      
+                        <!-- %= submit_tag "&#x23ce;".html_safe,:class=>"btn btn-secondary", :onclick => "this.trans_type.valuue='MPAY';alert(this.trans_type);" %-->
+                        
+                        <%= submit_tag "&#x23ce;".html_safe,:class=>"btn btn-secondary", :onclick => "$('#lc_form_tt_#{sulabh_loan_request.sulabh_loan_confirms[0].id}' ).val('MPAY');" %>
+                      </td>
+                      
+                        <td><%= submit_tag "&#x23ce;".html_safe,:class=>"btn btn-primary", :onclick => "$('#lc_form_tt_#{sulabh_loan_request.sulabh_loan_confirms[0].id}' ).val('MPAYEMI');" %></td>
+                      <% end %> <!-- End of form_for -->
+           
+                    <% end %> <!-- End of  sulabh_loan_confirms.count if -->
+                    
+              <% end %> <!-- End of  sulabh_loan_offers.count if -->
+           <% end %>   <!-- End of  sulabh_loan_confirms.count if -->
+			</tr> 
+		<% end %>	
+                
+	</tbody>
+ </table>
+                
+           
+

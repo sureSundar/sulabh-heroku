@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Sulabh Loan Repay Actuals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sulabh loan confim</th>
+      <th>Installment no</th>
+      <th>Installment amount</th>
+      <th>Datepaid</th>
+      <th>Actinterest</th>
+      <th>Actdueafterinst</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sulabh_loan_repay_actuals.each do |sulabh_loan_repay_actual| %>
+      <tr>
+        <td><%= sulabh_loan_repay_actual.sulabh_loan_confim_id %></td>
+        <td><%= sulabh_loan_repay_actual.installment_no %></td>
+        <td><%= sulabh_loan_repay_actual.installment_amount %></td>
+        <td><%= sulabh_loan_repay_actual.datepaid %></td>
+        <td><%= sulabh_loan_repay_actual.actinterest %></td>
+        <td><%= sulabh_loan_repay_actual.actdueafterinst %></td>
+        <td><%= link_to 'Show', sulabh_loan_repay_actual %></td>
+        <td><%= link_to 'Edit', edit_sulabh_loan_repay_actual_path(sulabh_loan_repay_actual) %></td>
+        <td><%= link_to 'Destroy', sulabh_loan_repay_actual, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sulabh loan repay actual', new_sulabh_loan_repay_actual_path %>

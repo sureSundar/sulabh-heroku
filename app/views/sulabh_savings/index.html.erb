@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Sulabh Savings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sulabh user profile</th>
+      <th>Sulabh loan confirm</th>
+      <th>Aadhaar</th>
+      <th>Transaction date</th>
+      <th>Debitamount</th>
+      <th>Creditamount</th>
+      <th>Remarks</th>
+      <th>Status</th>
+      <th>Depositedinbank</th>
+      <th>Branch name</th>
+      <th>Depositdate</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sulabh_savings.each do |sulabh_saving| %>
+      <tr>
+        <td><%= sulabh_saving.sulabh_user_profile_id %></td>
+        <td><%= sulabh_saving.sulabh_loan_confirm_id %></td>
+        <td><%= sulabh_saving.aadhaar %></td>
+        <td><%= sulabh_saving.transaction_date %></td>
+        <td><%= sulabh_saving.debitAmount %></td>
+        <td><%= sulabh_saving.creditAmount %></td>
+        <td><%= sulabh_saving.remarks %></td>
+        <td><%= sulabh_saving.status %></td>
+        <td><%= sulabh_saving.depositedinbank %></td>
+        <td><%= sulabh_saving.branch_name %></td>
+        <td><%= sulabh_saving.depositDate %></td>
+        <td><%= link_to 'Show', sulabh_saving %></td>
+        <td><%= link_to 'Edit', edit_sulabh_saving_path(sulabh_saving) %></td>
+        <td><%= link_to 'Destroy', sulabh_saving, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sulabh saving', new_sulabh_saving_path %>

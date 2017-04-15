@@ -1,0 +1,1 @@
+json.partial! "sulabh_loan_repay_schedules/sulabh_loan_repay_schedule", sulabh_loan_repay_schedule: @sulabh_loan_repay_schedule

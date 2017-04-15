@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sulabh_user_profile_id_id: 
+  sulabh_loan_confirm_id_id: 
+  aadhaar: MyString
+  transaction_date: 2017-04-14 18:52:20
+  debitAmount: 9.99
+  creditAmount: 9.99
+  remarks: MyString
+  status: MyString
+  depositedinbank: MyString
+  branch_name: MyString
+  depositDate: 2017-04-14 18:52:20
+
+two:
+  sulabh_user_profile_id_id: 
+  sulabh_loan_confirm_id_id: 
+  aadhaar: MyString
+  transaction_date: 2017-04-14 18:52:20
+  debitAmount: 9.99
+  creditAmount: 9.99
+  remarks: MyString
+  status: MyString
+  depositedinbank: MyString
+  branch_name: MyString
+  depositDate: 2017-04-14 18:52:20

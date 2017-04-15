@@ -1,0 +1,44 @@
+<div class="container">
+	<div class="row center-header">
+		<div class="col-md-12 btn btn-outline-danger" >
+			<%= form_tag "/dew_agent/dashboard", :method => "post" do |f| %>
+				Aadhar of User
+				<%= text_field_tag 'Aadhar' %>
+				Loan Status
+				<%= text_field_tag 'lstatus' %>
+				Loan Confirmation ID
+				<%= text_field_tag 'lc_id' %>
+				<%= submit_tag 'Go' %>
+			<% end %>
+
+			
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-6 btn btn-outline-warning">
+		<!-- My open Requests container -->
+			<%= render :file => "sulabh_loan_requests/index.html" %>
+			<% if params[:action] === "showOffersLR" %>
+				<%= link_to "Back", dew_requestor_dashboard_path, :class => "btn btn-primary" %>
+			<% end %>
+		</div>
+
+		<div class="col-md-6 btn btn-outline-success">
+		<!-- My open Offers container -->
+			<%= render :file => "sulabh_loan_offers/index.html" %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 btn btn-outline-info">
+			<!--Loan Payment History Form -->
+            <%= render "sulabh_loan_requests/summary.html" %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 btn btn-outline-danger">
+			<!--New Loan Request Form -->           
+			<%= link_to "New Loan Request", new_sulabh_loan_request_path, :class => "btn btn-primary" %>
+		</div>
+	</div>
+</div>

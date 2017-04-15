@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170409201106) do
+ActiveRecord::Schema.define(version: 20170414225042) do
 
   create_table "sulabh_addresses", force: :cascade do |t|
     t.string   "address1"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 20170409201106) do
     t.string   "installmentfrequency"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.decimal  "disbursedAmount"
+    t.decimal  "EMI"
   end
 
   create_table "sulabh_loan_confirms", force: :cascade do |t|
@@ -70,6 +72,33 @@ ActiveRecord::Schema.define(version: 20170409201106) do
   end
 
   add_index "sulabh_loan_offers", ["username_id"], name: "index_sulabh_loan_offers_on_username_id"
+
+  create_table "sulabh_loan_repay_actuals", force: :cascade do |t|
+    t.integer  "sulabh_loan_confirm_id"
+    t.integer  "installment_no"
+    t.decimal  "installment_amount"
+    t.date     "datepaid"
+    t.decimal  "actinterest"
+    t.decimal  "actdueafterinst"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "sulabh_loan_repay_actuals", ["sulabh_loan_confirm_id"], name: "index_sulabh_loan_repay_actuals_on_sulabh_loan_confirm_id"
+
+  create_table "sulabh_loan_repay_schedules", force: :cascade do |t|
+    t.integer  "sulabh_loan_confirm_id"
+    t.decimal  "principal"
+    t.integer  "installment_no"
+    t.date     "installment_due_date"
+    t.decimal  "installment_amount"
+    t.decimal  "interest_for_installment"
+    t.decimal  "due_after_installment"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "sulabh_loan_repay_schedules", ["sulabh_loan_confirm_id"], name: "index_sulabh_loan_repay_schedules_on_sulabh_loan_confirm_id"
 
   create_table "sulabh_loan_requests", force: :cascade do |t|
     t.integer  "username_id"
@@ -153,6 +182,33 @@ ActiveRecord::Schema.define(version: 20170409201106) do
 
   create_table "sulabh_roles", force: :cascade do |t|
     t.string   "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sulabh_savings", force: :cascade do |t|
+    t.integer  "sulabh_user_profile_id"
+    t.integer  "sulabh_loan_confirm_id"
+    t.string   "aadhaar"
+    t.datetime "transaction_date"
+    t.decimal  "debitAmount"
+    t.decimal  "creditAmount"
+    t.string   "remarks"
+    t.string   "status"
+    t.string   "depositedinbank"
+    t.string   "branch_name"
+    t.datetime "depositDate"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "trans_type"
+  end
+
+  add_index "sulabh_savings", ["sulabh_loan_confirm_id"], name: "index_sulabh_savings_on_sulabh_loan_confirm_id"
+  add_index "sulabh_savings", ["sulabh_user_profile_id"], name: "index_sulabh_savings_on_sulabh_user_profile_id"
+
+  create_table "sulabh_savings_balances", force: :cascade do |t|
+    t.string   "aadhar"
+    t.decimal  "currentBal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

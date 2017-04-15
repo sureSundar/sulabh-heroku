@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sulabh loan confim:</strong>
+  <%= @sulabh_loan_repay_schedule.sulabh_loan_confim_id %>
+</p>
+
+<p>
+  <strong>Principal:</strong>
+  <%= @sulabh_loan_repay_schedule.principal %>
+</p>
+
+<p>
+  <strong>Installment no:</strong>
+  <%= @sulabh_loan_repay_schedule.installment_no %>
+</p>
+
+<p>
+  <strong>Installment due date:</strong>
+  <%= @sulabh_loan_repay_schedule.installment_due_date %>
+</p>
+
+<p>
+  <strong>Installment amount:</strong>
+  <%= @sulabh_loan_repay_schedule.installment_amount %>
+</p>
+
+<p>
+  <strong>Interest for installment:</strong>
+  <%= @sulabh_loan_repay_schedule.interest_for_installment %>
+</p>
+
+<p>
+  <strong>Due after installment:</strong>
+  <%= @sulabh_loan_repay_schedule.due_after_installment %>
+</p>
+
+<%= link_to 'Edit', edit_sulabh_loan_repay_schedule_path(@sulabh_loan_repay_schedule) %> |
+<%= link_to 'Back', sulabh_loan_repay_schedules_path %>

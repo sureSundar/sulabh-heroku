@@ -1,33 +1,46 @@
-<h2>Sign up</h2>
+<div class ="container">
+<div class="row align-items-center">
+<div class="col-md-4"></div>
+<div class="col-md-4">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+
+
+<div class="center-header">
+<h2>Sign up</h2>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :class => "form-signin") do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :phoneno %><br />
-    <%= f.text_field :phoneno, autofocus: true %>
+    <%= f.text_field :phoneno, autofocus: true, :placeholder => "10 digit phone no",:class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :aadhar %><br />
-    <%= f.text_field :aadhar %>
+    <%= f.text_field :aadhar,:placeholder => "12 digit Aadhar no" , :class => "form-control" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "off",:placeholder => "Password" ,:class => "form-control" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    
+    <%= f.password_field :password_confirmation, autocomplete: "off",:placeholder => "Password Confirmation",:class => "form-control"  %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", :class => "btn btn-primary btn-block" %><br/>
+    <%= render "devise/shared/links" %>
   </div>
 <% end %>
+</div>
+</div>
+<div class="col-md-4"></div>
 
-<%= render "devise/shared/links" %>
+</div>
+</div>

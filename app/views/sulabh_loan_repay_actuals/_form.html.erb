@@ -1,0 +1,41 @@
+<%= form_for(@sulabh_loan_repay_actual) do |f| %>
+  <% if @sulabh_loan_repay_actual.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sulabh_loan_repay_actual.errors.count, "error") %> prohibited this sulabh_loan_repay_actual from being saved:</h2>
+
+      <ul>
+      <% @sulabh_loan_repay_actual.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :sulabh_loan_confim_id_id %><br>
+    <%= f.text_field :sulabh_loan_confim_id_id %>
+  </div>
+  <div class="field">
+    <%= f.label :installment_no %><br>
+    <%= f.number_field :installment_no %>
+  </div>
+  <div class="field">
+    <%= f.label :installment_amount %><br>
+    <%= f.text_field :installment_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :datepaid %><br>
+    <%= f.date_select :datepaid %>
+  </div>
+  <div class="field">
+    <%= f.label :actinterest %><br>
+    <%= f.text_field :actinterest %>
+  </div>
+  <div class="field">
+    <%= f.label :actdueafterinst %><br>
+    <%= f.text_field :actdueafterinst %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

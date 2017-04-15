@@ -1,0 +1,61 @@
+<%= form_for(@sulabh_saving) do |f| %>
+  <% if @sulabh_saving.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sulabh_saving.errors.count, "error") %> prohibited this sulabh_saving from being saved:</h2>
+
+      <ul>
+      <% @sulabh_saving.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :sulabh_user_profile_id %><br>
+    <%= f.text_field :sulabh_user_profile_id %>
+  </div>
+  <div class="field">
+    <%= f.label :sulabh_loan_confirm_id %><br>
+    <%= f.text_field :sulabh_loan_confirm_id %>
+  </div>
+  <div class="field">
+    <%= f.label :aadhaar %><br>
+    <%= f.text_field :aadhaar %>
+  </div>
+  <div class="field">
+    <%= f.label :transaction_date %><br>
+    <%= f.datetime_select :transaction_date %>
+  </div>
+  <div class="field">
+    <%= f.label :debitAmount %><br>
+    <%= f.text_field :debitAmount %>
+  </div>
+  <div class="field">
+    <%= f.label :creditAmount %><br>
+    <%= f.text_field :creditAmount %>
+  </div>
+  <div class="field">
+    <%= f.label :remarks %><br>
+    <%= f.text_field :remarks %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :depositedinbank %><br>
+    <%= f.text_field :depositedinbank %>
+  </div>
+  <div class="field">
+    <%= f.label :branch_name %><br>
+    <%= f.text_field :branch_name %>
+  </div>
+  <div class="field">
+    <%= f.label :depositDate %><br>
+    <%= f.datetime_select :depositDate %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

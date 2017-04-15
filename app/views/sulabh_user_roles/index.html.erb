@@ -14,7 +14,7 @@
   <tbody>
     <% @sulabh_user_roles.each do |sulabh_user_role| %>
       <tr>
-        <td><%= sulabh_user_role.sulabh_user_profile.name %></td>
+        <td><%= SulabhUserProfile.find(sulabh_user_role.sulabh_user_profile_id).name %></td>
 	<td><%= SulabhRole.find(sulabh_user_role.role_id).role %></td>	
         <td><%= link_to 'Show', sulabh_user_role %></td>
         <td><%= link_to 'Edit', edit_sulabh_user_role_path(sulabh_user_role) %></td>

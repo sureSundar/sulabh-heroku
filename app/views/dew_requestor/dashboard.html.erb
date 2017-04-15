@@ -19,9 +19,16 @@
 		</div>
 	</div>
 	<div class="row">
+		<div class="col-md-12 btn btn-outline-info">
+			<!--Loan Payment History Form -->
+            <%= render "sulabh_loan_requests/summary.html" %>
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-md-12 btn btn-outline-danger">
-			<!--New Loan Request Form -->
+			<!--New Loan Request Form -->           
 			<%= link_to "New Loan Request", new_sulabh_loan_request_path, :class => "btn btn-primary" %>
 		</div>
 	</div>
+
 </div>

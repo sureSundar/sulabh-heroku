@@ -2,13 +2,15 @@ require 'json'
 require 'api/ICICIAppathonAPIXway.rb'
 
 class DewRequestorController < ApplicationController
+  before_filter :set_locale
+
   def dashboard
     	@su = setSUPinSession
 
  	    @sulabh_loan_requests  = SulabhLoanRequest.where( :sulabh_user_profile_id => @su.id)
-      @openLRs_arr = @sulabh_loan_requests.to_a
-      @openLRs_arr.delete_if { |c| c.sulabh_request_statuses.where(:status => "CONFIRMED").count > 0 } 	
-      @sulabh_loan_requests = @openLRs_arr
+      #@openLRs_arr = @sulabh_loan_requests.to_a
+      #@openLRs_arr.delete_if { |c| c.sulabh_request_statuses.where(:status => "CONFIRMED").count > 0 } 	
+      #@sulabh_loan_requests = @openLRs_arr
       #@sulabh_loan_requests = @openLRs_arr && @openLRs_arr.to_h
   	  
   	  
@@ -55,7 +57,7 @@ class DewRequestorController < ApplicationController
       @map = @sulabh_loan_offer.sulabh_req_offer_maps.build
       
 
-  		@sulabh_loan_request = (@sulabh_loan_offer.sulabh_loan_requests.count == 1 && @sulabh_loan_offer.sulabh_loan_requests[0]) || @sulabh_loan_offer.sulabh_loan_requests.new
+  		@sulabh_loan_request = @sulabh_loan_offer.sulabh_loan_requests.count == 0 ?  @sulabh_loan_offer.sulabh_loan_requests.new : @sulabh_loan_offer.sulabh_loan_requests[0] 
   		@sulabh_loan_request.sulabh_user_profile_id = @su["id"]
       @sulabh_loan_request.behavescore = getBehaviourScore(@su["accountno"])
       @sulabh_loan_request.interest = @sulabh_loan_offer.offerinterestrate
@@ -85,54 +87,90 @@ def loan_confirm
       @lrSUP = SulabhUserProfile.find(SulabhLoanRequest.find(request_id).sulabh_user_profile_id)
       @loSUP = SulabhUserProfile.find(SulabhLoanOffer.find(offer_id).sulabh_user_profile_id)
 
+      @slr = SulabhLoanRequest.find(request_id)
+      
+      @slo = SulabhLoanOffer.find(offer_id)
+      
       if (@lrSUP.id === @loSUP.id) 
         @notice ="You cant match your offer to a loan from you."
         session['lc'] = session['sloan'] = session['soffer'] = nil
         render "/fluidic/requestflow"
       else
 
-          @lc = SulabhLoanConfirm.new
-          @lc.sulabh_loan_request_id = request_id
-          @lc.sulabh_loan_offer_id = offer_id
-          @sp = SulabhPolicy.new
-          @sp = getPolicy(@lc,@sp)
           
-          loanamount = [SulabhLoanRequest.find(@lc.sulabh_loan_request_id).amount,SulabhLoanOffer.find(@lc.sulabh_loan_offer_id).offeramount].min
-          interestrate = SulabhLoanOffer.find(@lc.sulabh_loan_offer_id).offerinterestrate
-          paybydate =  [SulabhLoanRequest.find(@lc.sulabh_loan_request_id).paybydate !=nil ? SulabhLoanRequest.find(@lc.sulabh_loan_request_id).paybydate : Time.now + 3.months,SulabhLoanOffer.find(@lc.sulabh_loan_offer_id).paybydate != nil ? SulabhLoanOffer.find(@lc.sulabh_loan_offer_id).paybydate : Time.now + 3.months].min
-          premium = calculateStandardPremium(loanamount,interestrate,paybydate)
+          #@lc = SulabhLoanConfirm.where(:sulabh_loan_request_id == request_id).where(:sulabh_loan_offer_id == offer_id)
+          #@lc = nil
+          #@lc = @lc != nil ? @lc[0] : nil
+          if (@slr.sulabh_loan_confirms.count == 0 && @slo.sulabh_loan_confirms.count == 0)
+            @lc = SulabhLoanConfirm.new  
+            @lc.sulabh_loan_request_id = request_id
+            @lc.sulabh_loan_offer_id = offer_id
+            @sp = SulabhPolicy.new
+            @sp = getPolicy(@lc,@sp)
+            
+            loanamount = [SulabhLoanRequest.find(@lc.sulabh_loan_request_id).amount,SulabhLoanOffer.find(@lc.sulabh_loan_offer_id).offeramount].min
+            interestrate = SulabhLoanOffer.find(@lc.sulabh_loan_offer_id).offerinterestrate
+            paybydate =  [SulabhLoanRequest.find(@lc.sulabh_loan_request_id).paybydate !=nil ? SulabhLoanRequest.find(@lc.sulabh_loan_request_id).paybydate : Time.now + 3.months,SulabhLoanOffer.find(@lc.sulabh_loan_offer_id).paybydate != nil ? SulabhLoanOffer.find(@lc.sulabh_loan_offer_id).paybydate : Time.now + 3.months].min
+            premium = calculateStandardPremium(loanamount,interestrate,paybydate)
 
-          @sf = SulabhFinancial.new
-          @sf.loanamount = loanamount
-          @sf.policypremium = premium
-          @sf.procfee = loanamount * 0.01
-          @sf.approvedintrate = interestrate
-          @sf.installmentcount = 3
-          @sf.installmentfrequency = "Monthly"
+            @sf = SulabhFinancial.new
+            @sf.loanamount = loanamount
+            @sf.policypremium = premium
+            @sf.procfee = loanamount * 0.001
+            @sf.approvedintrate = interestrate
+            ct = Time.now
+            installmentcount = (paybydate.year * 12 + paybydate.month) - (ct.year * 12 + ct.month)
+            @sf.installmentcount = installmentcount
+            @sf.installmentfrequency = "Monthly"
+            @EMI = calculateEMI(loanamount,interestrate,paybydate)
+            @sf.EMI = @EMI
+            @disburseAmount = loanamount - @sf.procfee - @sf.policypremium
+            @disburseAmount = @disburseAmount.round(2)
+            @sf.disbursedAmount = @disburseAmount            
+            @sf.save
 
-          @sf.save
+            @lc.sulabh_policy_id = @sp.id
+            @lc.sulabh_financial_id = @sf.id
+            @lc.save
+            
+            #@slr = SulabhLoanRequest.find(@lc.sulabh_loan_request_id)
+            #@slr.sulabh_loan_confirm_id = @lc.id
+            #@slr.save
 
-          @lc.sulabh_policy_id = @sp.id
-          @lc.sulabh_financial_id = @sf.id
-          @lc.save
-          
-          @los = SulabhLoanOffer.find(@lc.sulabh_loan_offer_id).sulabh_offer_statuses.build
-          @los.sulabh_loan_offer_id = @lc.sulabh_loan_offer_id
-          @los.status="CONFIRMED"
-          @los.save
+            #@slo = SulabhLoanOffer.find(@lc.sulabh_loan_offer_id)
+            #@slo.sulabh_loan_confirm_id = @lc.id
+            #@slo.save
 
-          @lrs = SulabhLoanRequest.find(@lc.sulabh_loan_request_id).sulabh_request_statuses.build
-          @lrs.sulabh_loan_request_id = @lc.sulabh_loan_request_id
-          @lrs.status="CONFIRMED"
-          @lrs.save
+            @los = @slo.sulabh_offer_statuses.build
+            @los.sulabh_loan_offer_id = @lc.sulabh_loan_offer_id
+            @los.status="CONFIRMED"
+            @los.save
 
-          
-          if ((@lrSUP.accountno != nil && @lrSUP.accountno) != (@loSUP.accountno !=nil && @loSUP.accountno))
-              autoDisburse(@loSUP.accountno,@lrSUP.accountno,loanamount,"NA","1","school fee payment")
+            @lrs = @slr.sulabh_request_statuses.build
+            @lrs.sulabh_loan_request_id = @lc.sulabh_loan_request_id
+            @lrs.status="CONFIRMED"
+            @lrs.save
+
+            if ((@lrSUP.accountno != nil && @lrSUP.accountno) != (@loSUP.accountno !=nil && @loSUP.accountno))
+                autoDisburse(@loSUP.accountno,@lrSUP.accountno,@disburseAmount,"NA","1","school fee payment")
+            else
+              @notice ="Either of SrcAcc or DestAcc is empty or same.Cant transfer funds between empty or same accounts..."
+              render "fluidic/requestflow"
+            end          
           else
-            @notice ="Either of SrcAcc or DestAcc is empty or same.Cant transfer funds between empty or same accounts..."
-            render "fluidic/requestflow"
-          end
+            @notice ="Loan has already been CONFIRMED and Fund has been disbursed.Here are the details for your reference"
+            #@lc = @slo.sulabh_loan_confirms[0]["id"] == @slr.sulabh_loan_confirms[0]["id"] ? @slr.sulabh_loan_confirms[0] : ""
+            @lc = @slo.sulabh_loan_confirms[0]
+            @sf = SulabhFinancial.find(@lc.sulabh_financial_id)
+            @sp = SulabhPolicy.find(@lc.sulabh_policy_id)
+            @los = @slo.sulabh_offer_statuses
+            @lrs = @slr.sulabh_request_statuses
+            loanamount = @sf.loanamount
+            @disburseAmount = loanamount - @sf.procfee - @sf.policypremium
+            @disburseAmount = @disburseAmount.round(2)
+          end  
+
+          
 
           #session['sloan'] = session['soffer'] = nil 
           #session['lc'] = @lc.id
@@ -149,15 +187,28 @@ def loan_confirm
       sp.provider = "ICICI LOMBARD"
       sp.policyno = "ICICI SULABH #{sp.id}"
       sp.scheme = "SULABH SUVIDHA"
-      sp.premium = premium
+      sp.premium = premium.round(2)
       sp.startdate = Time.now
       sp.enddate = paybydate
       sp.save
       return sp
       #behavescorepremium = 
   end 
+  
+  def calculateEMI(loanamount,interestrate,paybydate)
+      @P = loanamount
+      @R = interestrate/100
+      @ct = Time.now
+      @N = (paybydate.year * 12 + paybydate.month) - (@ct.year * 12 + @ct.month)
+      @EMI = (@P * @R * ((1+@R) ** @N))/((1+@R) ** @N -1)
+      puts "EMI"
+      puts @EMI
+      return @EMI.round(2)
+  end
+
   def calculateStandardPremium(loanamount,interestrate,paybydate)
-      return loanamount*interestrate * 1.25 * 0.005
+
+      return loanamount*interestrate * 1.25 * 0.0005
 
   end
   def calculateBehaveScorePremium(lc)

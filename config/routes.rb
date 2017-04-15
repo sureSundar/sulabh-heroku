@@ -1,23 +1,10 @@
 Rails.application.routes.draw do
-  
-  get 'dew_requestor/dashboard'
+ 
 
-  get 'dew_requestor/createLR'
-
-  get 'dew_requestor/myrequests'
-
-  get 'dew_requestor/(:id)/offerLR', :to => 'dew_requestor#offerLR', :as => '/dew_requestor/offerLR'
-  get 'dew_requestor/(:id)/showOffersLR', :to => 'dew_requestor#showOffersLR', :as => '/dew_requestor/showOffersLR'
-
-  get 'dew_provider/dashboard'
-
-  get 'dew_provider/offer'
-
-  get 'dew_provider/(:id)/LRoffer', :to => 'dew_provider#LRoffer', :as => '/dew_provider/LRoffer'
-  get 'dew_provider/(:id)/showLROffer', :to => 'dew_provider#showLROffer', :as => '/dew_provider/showLROffer'
-
-  get 'fluidic/requestflow'
-
+  resources :sulabh_loan_repay_actuals
+  resources :sulabh_loan_repay_schedules
+  resources :sulabh_savings_balances
+  resources :sulabh_savings
   devise_for :users, :controllers => { :registrations => "users/registrations" }
   
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -41,11 +28,59 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 devise_scope :user do
-#  scope '(:locale)', :locale => /en|ta|hi|te/  do
+  #scope '(:locale)', :locale => /en|ta|hi|te/  do
 	   #root to: "sulabh_loan_requests#index"
      root to: "fluidic#requestflow"
- # end
+  #end
 end
+
+  scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+     #root to: "sulabh_loan_requests#index"
+     root to: "fluidic#requestflow" , :as => "locale_selected"
+       
+  get 'dew_requestor/dashboard'
+
+  get 'dew_requestor/createLR'
+
+  get 'dew_requestor/myrequests'
+
+  get 'dew_requestor/(:id)/offerLR', :to => 'dew_requestor#offerLR', :as => '/dew_requestor/offerLR'
+  get 'dew_requestor/(:id)/showOffersLR', :to => 'dew_requestor#showOffersLR', :as => '/dew_requestor/showOffersLR'
+
+  get 'dew_requestor/(:id)/(:id1)/loan_confirm', :to => 'dew_requestor#loan_confirm', :as => '/dew_requestor/loan_confirm'
+  post 'dew_requestor/(:id)/(:id1)/loan_confirm', :to => 'dew_requestor#loan_confirm', :as => '/dew_requestor/loan_confirm_post'
+
+
+  get 'dew_provider/dashboard'
+
+  get 'dew_provider/offer'
+
+  get 'dew_provider/(:id)/LRoffer', :to => 'dew_provider#LRoffer', :as => '/dew_provider/LRoffer'
+  get 'dew_provider/(:id)/showLROffer', :to => 'dew_provider#showLROffer', :as => '/dew_provider/showLROffer'
+
+  get 'fluidic/requestflow'
+post 'fluidic/role_selected', :to => 'fluidic#role_selected'
+get 'fluidic/role_selected', :to => 'fluidic#role_selected' 
+
+post 'fluidic/(:id)/fetch_offers', :to => 'fluidic#fetch_offers',:as => '/fetch_offers'
+get 'fluidic/fetch_offers', :to => 'fluidic#fetch_offers',:as => '/fetch_all_offers'
+post 'fluidic/(:id)/(:id1)/loan_confirm', :to => 'fluidic#loan_confirm',:as => '/loan_confirm'
+
+ get 'dew_agent/dashboard'
+ post 'dew_agent/dashboard'
+
+  get 'dew_agent/searchByAadhar'
+
+  get 'dew_agent/collectpayment'
+
+  get 'dew_agent/collectsaving'
+
+  get 'dew_agent/collectEMI'
+
+  get 'dew_agent/reconcile'
+
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -95,11 +130,5 @@ end
   #     resources :products
   #   end
 get 'api_check', :to => 'say#hello' 
-post 'fluidic/role_selected', :to => 'fluidic#role_selected'
-get 'fluidic/role_selected', :to => 'fluidic#role_selected' 
-
-post 'fluidic/(:id)/fetch_offers', :to => 'fluidic#fetch_offers',:as => '/fetch_offers'
-get 'fluidic/fetch_offers', :to => 'fluidic#fetch_offers',:as => '/fetch_all_offers'
-post 'fluidic/(:id)/(:id1)/loan_confirm', :to => 'fluidic#loan_confirm',:as => '/loan_confirm'
 
 end

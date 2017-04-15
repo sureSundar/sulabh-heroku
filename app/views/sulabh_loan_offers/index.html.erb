@@ -17,7 +17,7 @@
     </thead>
 
     <tbody>
-      <% @sulabh_loan_offers.each do |sulabh_loan_offer| %>
+      <% @sulabh_loan_offers && @sulabh_loan_offers.each do |sulabh_loan_offer| %>
           <td><%= sulabh_loan_offer.offeramount %></td>
           <td><%= distance_of_time_in_words(Time.now,sulabh_loan_offer.expiresby) %></td>
           <td><%= sulabh_loan_offer.offerinterestrate %></td>

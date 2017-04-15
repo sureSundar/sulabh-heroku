@@ -9,7 +9,10 @@ class FluidicController < ApplicationController
         redirect_to dew_requestor_dashboard_path
     elsif (params['srole'] === "Provider")
         redirect_to  dew_provider_dashboard_path
+    elsif (params['srole'] === "Agent")
+         redirect_to  dew_agent_dashboard_path
     end
+
   end
   def role_selected1
   	puts "role selected.Recieved param #{params['srole']}"

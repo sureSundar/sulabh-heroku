@@ -17,6 +17,7 @@
       <th>Interest</th>
       <th>Minpaybyamount</th>
       <th>Maxpaybyamount</th>
+      <th>Created at </th>
       
     </tr>
   </thead>
@@ -35,6 +36,7 @@
         <td><%= sulabh_loan_request.interest %></td>
         <td><%= sulabh_loan_request.minpaybyamount %></td>
         <td><%= sulabh_loan_request.maxpaybyamount %></td>
+        <td><%= sulabh_loan_request.created_at %></td>
         <% if sulabh_loan_request.sulabh_request_statuses.where(:status => "CONFIRMED").count == 0 %>
             <td><%= link_to 'Edit', edit_sulabh_loan_request_path(sulabh_loan_request) %></td>
             <td><%= link_to 'Destroy', sulabh_loan_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -47,6 +49,7 @@
         <% else %>
             <td><%= "LOAN CONFIRMED" %> </td>
         <% end %>
+
       </tr>
   </tbody>
 </table>
@@ -64,7 +67,7 @@
         <th>Offerinterestrate</th>
         <th>Paybydate</th>
         <th>Interestrate</th>
-      
+        <th> Offered at </th>
       </tr>
     </thead>
 
@@ -80,6 +83,7 @@
           <td><%= sulabh_loan_offer.offerinterestrate %></td>
           <td><%= sulabh_loan_offer.paybydate %></td>
           <td><%= sulabh_loan_offer.interestrate %></td>
+          <td><%= sulabh_loan_offer.created_at %></td>
           <% if sulabh_loan_offer.sulabh_offer_statuses.where(:status => "CONFIRMED").count == 0 %>
             <td><%= link_to 'Show', sulabh_loan_offer %></td>
             <td><%= link_to 'Edit', edit_sulabh_loan_offer_path(sulabh_loan_offer) %></td>
@@ -111,7 +115,7 @@
       <th>Premium</th>
       <th>Startdate</th>
       <th>Enddate</th>
-      
+      <th>Created at <th>
     </tr>
   </thead>
 
@@ -123,6 +127,7 @@
         <td><%= sulabh_policy.premium %></td>
         <td><%= sulabh_policy.startdate %></td>
         <td><%= sulabh_policy.enddate %></td>
+        <td><%= sulabh_policy.created_at %></td>
       </tr>
   </tbody>
 </table>
@@ -138,10 +143,14 @@
     <tr>
       <th>Loanamount</th>
       <th>Policypremium</th>
-      <th>Procfee</th>
+      <th>Procfee - ICICI</th>
+      <th>Procfee - SULABH</th>
       <th>Approvedintrate</th>
       <th>Installmentcount</th>
       <th>Installmentfrequency</th>
+      <th> EMI </th>
+      <th> Disbursed at </th>
+      <th>Loan Amount Disbursed </th>
     </tr>
   </thead>
 
@@ -149,10 +158,14 @@
       <tr>
         <td><%= sulabh_financial.loanamount %></td>
         <td><%= sulabh_financial.policypremium %></td>
-        <td><%= sulabh_financial.procfee %></td>
+        <td><%= sulabh_financial.procfee * 0.25 %></td>
+        <td><%= sulabh_financial.procfee * 0.75 %></td>
         <td><%= sulabh_financial.approvedintrate %></td>
-        <td><%= sulabh_financial.installmentcount %></td>
-        <td><%= sulabh_financial.installmentfrequency %></td>
+        <td class="btn-warning"><%= sulabh_financial.installmentcount %></td>
+        <td class="btn-warning"><%= sulabh_financial.installmentfrequency %></td>
+        <td class="btn-warning"><%= sulabh_financial.EMI %></td>
+        <td class="btn-warning"><%= sulabh_financial.created_at %></td>
+        <td class="btn-warning"><%= sulabh_financial.disbursedAmount %></td>
       </tr>
   </tbody>
 </table>

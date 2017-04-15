@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Sulabh Savings Balances</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Aadhar</th>
+      <th>Currentbal</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sulabh_savings_balances.each do |sulabh_savings_balance| %>
+      <tr>
+        <td><%= sulabh_savings_balance.aadhar %></td>
+        <td><%= sulabh_savings_balance.currentBal %></td>
+        <td><%= link_to 'Show', sulabh_savings_balance %></td>
+        <td><%= link_to 'Edit', edit_sulabh_savings_balance_path(sulabh_savings_balance) %></td>
+        <td><%= link_to 'Destroy', sulabh_savings_balance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sulabh savings balance', new_sulabh_savings_balance_path %>

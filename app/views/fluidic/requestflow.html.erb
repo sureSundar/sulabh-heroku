@@ -1,15 +1,25 @@
-<p id="notice"><%= @notice %></p>
+<div class ="container">
+<div class="row align-items-center">
+<div class="col-md-4"></div>
+<div class="col-md-4">
 
- <div class="btn btn-secondary" style="margin:'0 auto';height:100%;width:100%;">
+<p class="notice"><%= notice || @notice %></p>
+<p class="alert"><%= alert %></p>
+
+ <div class="btn btn-secondary center-header" style="margin:'0 auto';height:100%;width:100%;">
 	 <h1> Select your role </h1> <br>
 		 <% @su = SulabhUserProfile.where(:mobile => current_user.phoneno)[0] %>
 		     <%	@su.sulabh_user_roles.each do |role| %>
 				<%= form_tag "/fluidic/role_selected", :method => "post" do %>
         			<%= hidden_field_tag "srole" , SulabhRole.find(role.role_id).role %>
-			 		<%= submit_tag SulabhRole.find(role.role_id).role , :class => "btn btn-primary" %>
+			 		<%= submit_tag SulabhRole.find(role.role_id).role , :class => "btn btn-primary btn-block" %>
 		    <% end %>
 		    <br/>
+			
 		  <% end %>
     </div>
-  
+  </div>
+<div class="col-md-4"></div>
+</div>
+</div>
   

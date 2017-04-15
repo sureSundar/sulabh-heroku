@@ -1,0 +1,25 @@
+<%= form_for(@sulabh_savings_balance) do |f| %>
+  <% if @sulabh_savings_balance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sulabh_savings_balance.errors.count, "error") %> prohibited this sulabh_savings_balance from being saved:</h2>
+
+      <ul>
+      <% @sulabh_savings_balance.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :aadhar %><br>
+    <%= f.text_field :aadhar %>
+  </div>
+  <div class="field">
+    <%= f.label :currentBal %><br>
+    <%= f.text_field :currentBal %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

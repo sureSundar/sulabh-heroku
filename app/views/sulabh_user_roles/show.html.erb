@@ -2,12 +2,12 @@
 
 <p>
   <strong>Username:</strong>
-  <%= @sulabh_user_role.username %>
+  <%= SulabhUserProfile.find(@sulabh_user_role.sulabh_user_profile_id).name %>
 </p>
 
 <p>
   <strong>Role:</strong>
-  <%= @sulabh_user_role.role %>
+  <%= SulabhRole.find(@sulabh_user_role.role_id).role %>
 </p>
 
 <%= link_to 'Edit', edit_sulabh_user_role_path(@sulabh_user_role) %> |

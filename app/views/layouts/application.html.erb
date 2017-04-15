@@ -27,11 +27,9 @@
 <body>
 
 <style>
-.jumbotron {
+.sulabh-hdr {
     background-color: #f5821f; /*  ICICI Orange */
     color: #ffffff;
-    height:22%;
-
 }
 
 
@@ -42,15 +40,25 @@
 }
 
 </style>
-
+<nav class="navbar navbar-inverse btn-primary">
+  <ul class="list-inline">
+    <li class="list-inline-item">
+      <%= image_tag "logo.png",  width: "150", height: "50", :class => "img img-responsive" %> 
+    </li>
+    <li class="list-inline-item">
+        <p class="mb-0">| <%= t('title') %></p>
+    </li>
+    <li class="list-inline-item">
+        <p class="mb-0">:: <small> <i><%= t('caption') %></i> </small></p>
+    </li>
+ </nav>
 <nav class="navbar navbar-inverse btn-primary" >
 	<div class="d-inline-block" height = "50">
 	<div class="navbar-brand d-inline-block align-top">
-  	<%= image_tag "logo.png",  width: "150", height: "50", class: "navbar-brand d-inline-block align-top" %>   
-	<div class="navbar-brand d-inline-block align-bottom">
+  <div class="navbar-brand d-inline-block align-bottom">
 <%= if user_signed_in? 
-link_to(SulabhUserProfile.where(:mobile => current_user.phoneno)[0].name,edit_sulabh_user_profile_path(SulabhUserProfile.where(:mobile => current_user.phoneno)[0].id),:class => "navbar-brand d-inline-block align-top",height: "50")
- end %><%=session['srole'] != nil ? link_to("Role : [#{session['srole']}]","/fluidic/requestflow", :class=> "navbar-brand d-inline-block align-top",height: "50") : "" %>
+link_to(SulabhUserProfile.where(:mobile => current_user.phoneno)[0].name,edit_sulabh_user_profile_path(SulabhUserProfile.where(:mobile => current_user.phoneno)[0].id),:class => "navbar-brand d-inline-block align-top btn btn-outline-secondary",height: "50")
+ end %>as <%=session['srole'] != nil ? link_to("#{session['srole']}","/fluidic/requestflow", :class=> "navbar-brand d-inline-block align-top btn btn-danger",height: "50") : "" %>
 	</div>
 	</div>
 
@@ -60,15 +68,15 @@ link_to(SulabhUserProfile.where(:mobile => current_user.phoneno)[0].name,edit_su
   </button>
 <ul class="navbar-nav ">
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <!--ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" href="/fluidic/role_selected?srole=Requestor">Loan Requests</a>
       </li>
       <li class="nav-item"> 
         <%= link_to "Available Loan Offers",fetch_all_offers_path,:class => "nav-link" %>
       </li>
-    </ul>
-      <%= form_tag "/sulabh_loan_requests",:class => "locale nav-link form-inline my-2 my-lg-0",:method => "get" do %>
+    </ul-->
+      <%= form_tag "/users/sign_in",:class => "locale nav-link form-inline my-2 my-lg-0",:method => "get" do %>
         <%= select_tag 'locale',options_for_select(LANGUAGES,I18n.locale.to_s), :class=>"form-control mr-sm-2",onchange: 'this.form.submit();'  %>
         <%= submit_tag 'submit' %>
         <%= javascript_tag "$('.locale input').hide();" %>

@@ -1,0 +1,45 @@
+<%= form_for(@sulabh_loan_repay_schedule) do |f| %>
+  <% if @sulabh_loan_repay_schedule.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sulabh_loan_repay_schedule.errors.count, "error") %> prohibited this sulabh_loan_repay_schedule from being saved:</h2>
+
+      <ul>
+      <% @sulabh_loan_repay_schedule.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :sulabh_loan_confim_id_id %><br>
+    <%= f.text_field :sulabh_loan_confim_id_id %>
+  </div>
+  <div class="field">
+    <%= f.label :principal %><br>
+    <%= f.text_field :principal %>
+  </div>
+  <div class="field">
+    <%= f.label :installment_no %><br>
+    <%= f.number_field :installment_no %>
+  </div>
+  <div class="field">
+    <%= f.label :installment_due_date %><br>
+    <%= f.date_select :installment_due_date %>
+  </div>
+  <div class="field">
+    <%= f.label :installment_amount %><br>
+    <%= f.text_field :installment_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :interest_for_installment %><br>
+    <%= f.text_field :interest_for_installment %>
+  </div>
+  <div class="field">
+    <%= f.label :due_after_installment %><br>
+    <%= f.text_field :due_after_installment %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

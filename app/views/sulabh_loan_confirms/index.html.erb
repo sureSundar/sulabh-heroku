@@ -5,9 +5,6 @@
 <table>
   <thead>
     <tr>
-      <th>Request</th>
-      <th>Offer</th>
-      <th>Policyno</th>
       <th>Financedetails</th>
       <th colspan="3"></th>
     </tr>
@@ -16,9 +13,6 @@
   <tbody>
     <% @sulabh_loan_confirms.each do |sulabh_loan_confirm| %>
       <tr>
-        <td><%= sulabh_loan_confirm.request %></td>
-        <td><%= sulabh_loan_confirm.offer %></td>
-        <td><%= sulabh_loan_confirm.policyno %></td>
         <td><%= sulabh_loan_confirm.financedetails %></td>
         <td><%= link_to 'Show', sulabh_loan_confirm %></td>
         <td><%= link_to 'Edit', edit_sulabh_loan_confirm_path(sulabh_loan_confirm) %></td>
