@@ -40,58 +40,61 @@
 }
 
 </style>
-<nav class="navbar navbar-inverse btn-primary">
-  <ul class="list-inline">
-    <li class="list-inline-item">
-      <%= image_tag "logo.png",  width: "150", height: "50", :class => "img img-responsive" %> 
-    </li>
-    <li class="list-inline-item">
-        <p class="mb-0">| <%= t('title') %></p>
-    </li>
-    <li class="list-inline-item">
-        <p class="mb-0">:: <small> <i><%= t('caption') %></i> </small></p>
-    </li>
- </nav>
-<nav class="navbar navbar-inverse btn-primary" >
-	<div class="d-inline-block" height = "50">
-	<div class="navbar-brand d-inline-block align-top">
-  <div class="navbar-brand d-inline-block align-bottom">
-<%= if user_signed_in? 
-link_to(SulabhUserProfile.where(:mobile => current_user.phoneno)[0].name,edit_sulabh_user_profile_path(SulabhUserProfile.where(:mobile => current_user.phoneno)[0].id),:class => "navbar-brand d-inline-block align-top btn btn-outline-secondary",height: "50")
- end %>as <%=session['srole'] != nil ? link_to("#{session['srole']}","/fluidic/requestflow", :class=> "navbar-brand d-inline-block align-top btn btn-danger",height: "50") : "" %>
-	</div>
-	</div>
+<nav class="navbar fixed-top navbar-inverse btn-primary ">
+    <div class="row">
+        
+        <div class="col-sm-5 mr-auto align-items-end text-bottom">
+        <%= image_tag "mlogo.png" , width: "27", height: "27" %><%= t('title') %> | <small> <i><%= t('caption') %></i> </small>
+        </div>
+        
+        <div class="col-sm-7 align-items-start float-right text-right">
+<% if user_signed_in? %>
+        <%= link_to(SulabhUserProfile.where(:mobile => current_user.phoneno)[0].name,edit_sulabh_user_profile_path(SulabhUserProfile.where(:mobile => current_user.phoneno)[0].id),:class => "btn btn-outline-secondary btn-sm") %>
+        <%= session['srole'] != nil ? link_to("#{session['srole']}","/fluidic/requestflow", :class=> "btn btn-danger btn-sm" ) : "" %>
+        <%= link_to(t('signout') ,destroy_user_session_path,:method => :delete,:class=> "btn btn-outline-info btn-sm") %>
+ <% end %>
+  </div>
+  </div>
+  </div>
+  </nav>
+  
 
-  <!-- Navbar content -->
-   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<!--nav class="navbar fixed-top navbar-inverse btn-primary ">
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-<ul class="navbar-nav ">
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <!--ul class="navbar-nav mr-auto">
+  <a class="navbar-brand" href="/">
+      <div class="col-sm-1 mr-auto align-items-start text-top ">
+          <%= image_tag "logo.png" , width: "82", height: "27" %>
+        </div>        
+  </a>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/fluidic/role_selected?srole=Requestor">Loan Requests</a>
+        <% if user_signed_in? %>
+        <%= link_to(SulabhUserProfile.where(:mobile => current_user.phoneno)[0].name,edit_sulabh_user_profile_path(SulabhUserProfile.where(:mobile => current_user.phoneno)[0].id),:class => "btn btn-outline-secondary btn-sm nav-link") %>
+        <% end %>
       </li>
-      <li class="nav-item"> 
-        <%= link_to "Available Loan Offers",fetch_all_offers_path,:class => "nav-link" %>
+      <li class="nav-item">
+        <% if user_signed_in? %>
+        <%= session['srole'] != nil ? link_to("#{session['srole']}","/fluidic/requestflow", :class=> "btn btn-danger btn-sm nav-link" ) : "" %>
+        <% end %>
       </li>
-    </ul-->
-      <%= form_tag "/users/sign_in",:class => "locale nav-link form-inline my-2 my-lg-0",:method => "get" do %>
-        <%= select_tag 'locale',options_for_select(LANGUAGES,I18n.locale.to_s), :class=>"form-control mr-sm-2",onchange: 'this.form.submit();'  %>
-        <%= submit_tag 'submit' %>
-        <%= javascript_tag "$('.locale input').hide();" %>
-      <% end %>
-	<%= if user_signed_in? 
-		link_to('Sign Out',destroy_user_session_path,:method => :delete,:class=> "btn btn-secondary") 
-		end
-	%>
-  </div>
-</nav>
-<!-- div class="jumbotron text-center">
-    <%=image_tag "logo.png" %>
-    <h1><%= t('title') %> </h1>
-    <p><%= t('caption') %></p>
-  </div -->
+      <li class="nav-item">
+        <% if user_signed_in? %>
+        <%= link_to(t('signout') ,destroy_user_session_path,:method => :delete,:class=> "btn btn-outline-info btn-sm nav-link") %><% end %>
+      </li>
+    </ul>
+    <span class="navbar-text">
+        <%= t('title') %> | <small> <i><%= t('caption') %></i> </small>
+    </span>
+    </div>
+  </nav -->
+  
+	<!--/div>
+	</div>
+
+</nav-->
 <%= yield %>
 
 </body>

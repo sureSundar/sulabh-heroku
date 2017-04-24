@@ -53,7 +53,7 @@
     <%= f.text_field :bank ,:placeholder => "Bank Name",:class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.text_field :locale,:placeholder => "2 char : ta-tamil,te-Telugu,hi-Hindi,en-English",:class => "form-control" %>
+    <%= f.select :locale,options_for_select(LANGUAGES,I18n.locale.to_s), :class => "form-control" %>
   </div>
   <div class="field">
     

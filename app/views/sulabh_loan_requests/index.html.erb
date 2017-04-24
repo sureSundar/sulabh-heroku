@@ -6,18 +6,18 @@
   <thead>
     <tr>
 
-      <th>Amount</th>
-      <th colspan=2> Interest Range </th>
-       <th>Best Offer</th>
-      <th>Details</th>
-      <th>Offers</th>
+      <th><%= t('Amount') %> </th>
+      <th colspan=2> <%= t 'InterestRange' %> </th>
+       <th><%= t 'BestOffer' %> </th>
+      <th><%= t 'Details' %></th>
+      <th><%= t 'Offers' %></th>
       <% if session['srole'] === "Requestor" %>
         <th colspan="2"></th>
       <% elsif session['srole'] === "Agent" %>
         <th> LC ID </th>
         <th>Make Offer/Repay</th>
-        <th>PAID</th>
-        <th>DUE</th>
+        <th><%= t 'PAID' %></th>
+        <th><%= t 'DUE' %></th>
         <th>MPAY</th>
         <th>MPAYEMI</th>
       <% end %>

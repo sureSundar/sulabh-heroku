@@ -22,9 +22,9 @@
 		<div class="col-md-12 btn btn-outline-danger">
 			<!--New Loan Request Form -->
 			<% if session['srole'] === "Requestor" %>
-				<%= link_to "New Loan Request", new_sulabh_loan_request_path, :class => "btn btn-primary" %>
+				<%= link_to t("NewLoanRequest"), new_sulabh_loan_request_path, :class => "btn btn-primary" %>
 			<% elsif session['srole'] === "Provider" %>
-				<%= link_to "New Offer ", new_sulabh_loan_offer_path, :class => "btn btn-primary" %>
+				<%= link_to t('NewOffer'), new_sulabh_loan_offer_path, :class => "btn btn-primary" %>
 			<% end %>
 		</div>
 	</div>

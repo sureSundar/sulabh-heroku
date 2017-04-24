@@ -1,14 +1,14 @@
   
 
-  <h1>Loan Offers</h1>
+  <h1><%= t('LoanOffers') %> </h1>
 
   <table class="table table-responsive table-sm table-hover table-bordered">
     <thead>
       <tr>
-        <th>Amount</th>
-        <th>Expiresby</th>
-        <th>Interest</th>
-        <th>Details </th>
+        <th><%= t('Amount') %> </th>
+        <th><%= t('Expiresby') %> </th>
+        <th><%= t('Interest') %> </th>
+        <th><%= t('Details') %> </th>
         <% if session['srole'] === "Provider" %>
           <th>Requests</th>
         <% end %>

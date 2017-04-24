@@ -32,6 +32,7 @@ class SulabhUserProfilesController < ApplicationController
     req_role = @sulabh_user_profile.sulabh_user_roles.build
     req_role.role_id = SulabhRole.where(:role => "Provider")[0]
     req_role.save
+    session['locale'] = params[:sulabh_user_profile][:locale]
 
     respond_to do |format|
       if @sulabh_user_profile.save
@@ -47,6 +48,7 @@ class SulabhUserProfilesController < ApplicationController
   # PATCH/PUT /sulabh_user_profiles/1
   # PATCH/PUT /sulabh_user_profiles/1.json
   def update
+    session['locale'] = params[:sulabh_user_profile][:locale]
     respond_to do |format|
 	 if @sulabh_user_profile.update(sulabh_user_profile_params)
         #format.html { redirect_to @sulabh_user_profile, notice: 'Sulabh user profile was successfully updated.' }

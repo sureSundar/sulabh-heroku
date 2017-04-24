@@ -20,7 +20,8 @@ class DewRequestorController < ApplicationController
       @openoffers_arr.delete_if { |c| c.sulabh_offer_statuses.where(:status => "CONFIRMED").count > 0 ||  c.sulabh_loan_requests.count > 0 } 	
       @sulabh_loan_offers = @openoffers_arr
       #@sulabh_loan_offers = @openoffers_arr && @openoffers_arr.to_h
-      @notice = "Showing all your Open Loan Requests and Available Open Offers from others.."
+      #@notice = "Showing all your Open Loan Requests and Available Open Offers from others.."
+      @notice = "requestordashboardnotice1"
   	  
   end
   def showOffersLR
@@ -36,7 +37,8 @@ class DewRequestorController < ApplicationController
       #SulabhLoanOffer.where(:sulabh_user_profile_id != @su.id && 'expiresby >= :timenow',:timenow => Time.now )
       #@openoffers_arr = @openoffers.to_a
       #@openoffers_arr.delete_if { |c| c.sulabh_offer_statuses.where(:status => "CONFIRMED").count > 0 }  
-      @notice = "Showing Offers for Selected Loan Request"
+      #@notice = "Showing Offers for Selected Loan Request"
+      @notice = "requestorshowOffersLRnotice1"
       render :file => "dew_requestor/dashboard"
   end
 

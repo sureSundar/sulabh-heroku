@@ -40,8 +40,12 @@ def after_sign_in_path_for(resource_or_scope)
 end
  
 def set_locale
-  I18n.locale = params[:locale] || I18n.default_locale
+  if user_signed_in?
+    I18n.locale = SulabhUserProfile.where(:mobile => current_user.phoneno)[0].locale
+  end
+  I18n.locale ||= params[:locale] || session[:locale] || I18n.default_locale
   #Rails.application.routes.default_url_options[:locale]= I18n.locale
+  session[:locale] = I18n.locale
 end
 
  def default_url_options(options={})

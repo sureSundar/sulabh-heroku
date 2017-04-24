@@ -13,20 +13,20 @@
           @msav_bal = @summary.select { |k|  
              (k[0][:aadhaar ] == session['aadhar'] and k[0][:tt] == "MSAV") ? k[0][:sum] : nil }
       %>
-      Micro Savings :  <%= link_to @msav_bal[0] != nil ? @msav_bal[0][0][:sum] : 0   ,"/dew_agent/reconcile",:class => "btn btn-success" %>
+      <%= t 'MicroSavings' %> :  <%= link_to @msav_bal[0] != nil ? @msav_bal[0][0][:sum] : 0   ,"/dew_agent/reconcile",:class => "btn btn-success" %>
 <table class="table table-responsive table-sm table-hover table-bordered">
   <thead>
     <tr>
 
-      <th>Amount</th>
-      <th colspan=2> Interest Range </th>
-       <th>Best Offer</th>
-      <th>Details</th>
-      <th>Offers</th>
+      <th><%= t('Amount') %> </th>
+      <th colspan=2> <%= t 'InterestRange' %> </th>
+       <th><%= t 'BestOffer' %> </th>
+      <th><%= t 'Details' %></th>
+      <th><%= t 'Offers' %></th>
         <th> LC ID </th>
         <th>Make Offer/Repay</th>
-        <th>PAID</th>
-        <th>DUE</th>
+        <th><%= t 'PAID' %></th>
+        <th><%= t 'DUE' %></th>
         <th>MPAY</th>
         <th>MPAYEMI</th>
     </tr>
